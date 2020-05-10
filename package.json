@@ -4,8 +4,10 @@
   "description": "",
   "main": "pages/auth/index.html",
   "scripts": {
-    "start": "parcel *.html --open",
-    "build": "parcel build *.html"
+    "start": "parcel pages/*/*.html --open",
+    "build": "parcel build pages/*/*.html --out-dir public",
+    "deploy": "firebase deploy",
+    "firebase-test": "firebase serve"
   },
   "repository": {
     "type": "git",

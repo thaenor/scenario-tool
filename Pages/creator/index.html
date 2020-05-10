@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Esep Persona Tool</title>
+    <meta name="description" content="Scenario creation tool for ESEP nursing school.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Dark-NavBar.css">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
+    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="html-content">
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height:80px;background-color:#37434d;color:#ffffff;">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="fa fa-globe"></i>&nbsp;ESEP</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-home"></i>&nbsp;Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-wpexplorer"></i>&nbsp;Explore</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-star-o"></i>&nbsp;Features</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-user-circle-o"></i>&nbsp;Portfolio</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-sign-in"></i>&nbsp;Sign In</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="font-size: large;color: #0188A5;padding-top: 20px;padding-bottom: 20px;" contenteditable="true">Doente que vai ter alta dos cuidados continuados</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-xl-4"><img class="img-fluid" id="image-avatar" style="margin-top: 30px;width: 150px;"><input type="file" id="image-selector" onchange="previewFile()">
+                <section>
+                    <h5 style="margin-top: 5px;" contenteditable="true">Amélia Sousa</h5><button class="btn btn-primary" id="main-data" type="button" data-toggle="modal">Editar</button></section>
+            </div>
+            <div class="col-md-3 col-lg-4 col-xl-4" style="background-color: #f2f8fc;">
+                <section>
+                    <h2 style="font-size: medium;color: #0188A5;padding-top: 10px;">Acerca</h2><button class="btn btn-primary" id="about-section" type="button" data-toggle="modal">Editar</button></section>
+            </div>
+            <div class="col-md-3 col-lg-5 col-xl-4">
+                <h2 style="color: #0188A5;font-size: medium;padding-top: 10px;">Capacidade</h2>
+                <ul class="list-group" id="semaphore-selection-status">
+                    <li class="list-group-item"><span class="d-inline-block float-left" style="font-size: 12px;color: #0188A5;">Cognitiva&nbsp;</span>
+                        <div class="text-right d-inline float-right" title="Média"><span class="badge badge-primary text-monospace" id="cognitive-bad" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-cog" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace"
+                                id="cognitive-medium" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-cog" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="cognitive-good" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-cog" style="font-size: 18px;"></i></span></div>
+                    </li>
+                    <li class="list-group-item"><span class="d-inline-block float-left" style="font-size: 12px;color: #0188A5;">Memória&nbsp;</span>
+                        <div class="text-right d-inline float-right" title="Média"><span class="badge badge-primary text-monospace" id="memory-bad" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-brain" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="memory-medium"
+                                style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-brain" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="memory-good" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-brain" style="font-size: 18px;"></i></span></div>
+                    </li>
+                    <li class="list-group-item"><span class="d-inline-block float-left" style="font-size: 12px;color: #0188A5;">Fisica&nbsp;</span>
+                        <div class="text-right d-inline float-right" title="Média"><span class="badge badge-primary text-monospace" id="physical-bad" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-hand-paper" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace"
+                                id="physical-medium" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-hand-paper" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="physical-good" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-hand-paper" style="font-size: 18px;"></i></span></div>
+                    </li>
+                    <li class="list-group-item"><span class="d-inline-block float-left" style="font-size: 12px;color: #0188A5;">Económica&nbsp;</span>
+                        <div class="text-right d-inline float-right" title="Média"><span class="badge badge-primary text-monospace" id="money-bad" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-euro-sign" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace"
+                                id="money-medium" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-euro-sign" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="money-good" style="width: 30px;height: 25px;margin-right: 5px;"><i class="fas fa-euro-sign" style="font-size: 18px;"></i></span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Dificuldades e limitações</h3><button class="btn btn-primary" id="dificulties-section" type="button" data-toggle="modal">Editar</button></section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Perfil Fisico</h3>
+                        <div id="phy-progress" class="steps-progressbar">
+                            <ul>
+                                <li id="phy-step-1" class="previous">&nbsp;<i class="fas fa-walking" style="font-size: 20px;"></i></li>
+                                <li id="phy-step-2" class="previous"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
+                                <li id="phy-step-3" class="active"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
+                                <li id="phy-step-4"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
+                                <li id="phy-step-5"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
+                            </ul>
+                        </div><button class="btn btn-primary" id="phy-section" type="button" data-toggle="modal">Editar</button></section>
+                </div>
+                <div class="col-md-3">
+                    <section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Perfil emocional</h3>
+                        <div id="emo-progress" class="steps-progressbar">
+                            <ul>
+                                <li id="emo-step-1" class="previous">&nbsp;<i class="far fa-sad-cry" style="font-size: 20px;"></i></li>
+                                <li id="emo-step-2" class="previous"><i class="far fa-sad-tear" style="font-size: 20px;"></i></li>
+                                <li id="emo-step-3" class="active"><i class="far fa-meh" style="font-size: 20px;"></i></li>
+                                <li id="emo-step-4"><i class="far fa-smile" style="font-size: 20px;"></i></li>
+                                <li id="emo-step-5"><i class="far fa-grin-beam" style="font-size: 20px;"></i></li>
+                            </ul>
+                        </div><button class="btn btn-primary" id="emo-section" type="button" data-toggle="modal">Editar</button></section>
+                </div>
+                <div class="col-md-3">
+                    <section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Perfil social</h3>
+                        <div id="soc-progress" class="steps-progressbar">
+                            <ul>
+                                <li id="soc-step-1" class="previous">&nbsp;<i class="fas fa-user-alt-slash" style="font-size: 20px;"></i></li>
+                                <li id="soc-step-2" class="previous"><i class="fas fa-user" style="font-size: 20px;"></i></li>
+                                <li id="soc-step-3" class="previous"><i class="fas fa-user-plus" style="font-size: 20px;"></i></li>
+                                <li id="soc-step-4" class="active"><i class="fas fa-user-friends" style="font-size: 20px;"></i></li>
+                                <li id="soc-step-5"><i class="fas fa-users" style="font-size: 20px;"></i></li>
+                            </ul>
+                        </div><button class="btn btn-primary" id="soc-section" type="button" data-toggle="modal">Editar</button></section>
+                </div>
+                <div class="col-md-3">
+                    <section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Suporte familiar</h3>
+                        <div id="fam-progress" class="steps-progressbar">
+                            <ul>
+                                <li id="fam-step-1" class="previous">&nbsp;<i class="fas fa-user-slash" style="font-size: 20px;"></i></li>
+                                <li id="fam-step-2" class="active"><i class="fas fa-user" style="font-size: 20px;"></i></li>
+                                <li id="fam-step-3"><i class="fas fa-user-plus" style="font-size: 20px;"></i></li>
+                                <li id="fam-step-4"><i class="fas fa-user-friends" style="font-size: 20px;"></i></li>
+                                <li id="fam-step-5"><i class="fas fa-users" style="font-size: 20px;"></i></li>
+                            </ul>
+                        </div><button class="btn btn-primary" id="fam-section" type="button" data-toggle="modal">Editar</button></section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><button class="btn btn-primary" id="print" type="button" style="margin-top: 20px;margin-left: 50%;">Print</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editor-modal">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editor Mode</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="container-fluid" style="margin-bottom: 50px;background-color: transparent;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="toolbar"></div>
+                                <div id="editor" style="background-color: #ededed;margin-bottom: 50px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" id="get-content" type="button">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="assets/js/Quill-Text-Editor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" crossorigin="anonymous"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/progressBar.js"></script>
+</body>
+
+</html>

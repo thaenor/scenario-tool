@@ -1,0 +1,28 @@
+{
+  "name": "esep-scenario-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaenor/scenario-tool.git"
+  },
+  "dependencies": {
+    "firebase": "7.14.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": [],
+  "author": "Francisco Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaenor/scenario-tool/issues"
+  },
+  "homepage": "https://github.com/thaenor/scenario-tool#readme"
+}

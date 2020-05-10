@@ -1,6 +1,3 @@
-import * as firebase from "firebase/app";
-import "firebase/auth";
-
 var firebaseConfig = {
   apiKey: "AIzaSyC9DZtmJ_bDrC0YkOxVWF2S2jP4gpX06f8",
   authDomain: "scenario-tool.firebaseapp.com",
@@ -44,7 +41,7 @@ function getPassword() {
 }
 
 function goToMain() {
-  window.location.replace("/main/index.html");
+  window.location.replace("/main");
 }
 
 // Firebase stuff

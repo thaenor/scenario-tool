@@ -1,1 +1,98 @@
-<!DOCTYPE html><html><head><title>Parcel Sandbox</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>TODO</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"><link rel="stylesheet" href="/Login-Form-Clean.b3603a36.css"><meta name="google-signin-client_id" content="75545633744-cbphsk8r5lafs7bddc5lrup4mk3gciec.apps.googleusercontent.com"></head><body> <div class="login-clean"> <div class="login-form"> <h2 class="sr-only">Login Form</h2> <div class="illustration"><i class="icon ion-ios-navigate"></i></div> <div class="form-group"> <input id="login-form-email" class="form-control" type="email" name="email" placeholder="Email"> </div> <div class="form-group"> <input id="login-form-password" class="form-control" type="password" name="password" placeholder="Password"> </div> <div class="form-group"> <button id="loginBtn" class="btn btn-primary btn-block" type="submit" style="background-color:#0188a5;"> Log In </button> <button id="signInBtn" class="btn btn-primary btn-block" style="background-color:#0188a5;"> Register </button> <button id="signInGoogleBtn" class="btn btn-primary btn-block" style="background-color:#0188a5;"> Google OAuth </button> </div> <a class="forgot" href="#">Forgot your email or password?</a> </div> </div> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>    <script src="/loginPage.2654b078.js" async defer></script> </body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>TODO</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css" />
+    <meta
+      name="google-signin-client_id"
+      content="75545633744-cbphsk8r5lafs7bddc5lrup4mk3gciec.apps.googleusercontent.com"
+    />
+    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    /> -->
+  </head>
+
+  <body>
+    <div class="login-clean">
+      <div class="login-form">
+        <h2 class="sr-only">Login Form</h2>
+        <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+
+        <div class="form-group">
+          <input
+            id="login-form-email"
+            class="form-control"
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            id="login-form-password"
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <button
+            id="loginBtn"
+            class="btn btn-primary btn-block"
+            type="submit"
+            style="background-color: #0188A5;"
+          >
+            Log In
+          </button>
+          <button
+            id="signInBtn"
+            class="btn btn-primary btn-block"
+            style="background-color: #0188A5;"
+          >
+            Register
+          </button>
+
+          <button
+            id="signInGoogleBtn"
+            class="btn btn-primary btn-block"
+            style="background-color: #0188A5;"
+          >
+            Google OAuth
+          </button>
+        </div>
+        <a class="forgot" href="#"
+          >Forgot your email or password?</a
+        >
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"
+      defer
+      async
+    ></script>
+    <script src="assets/js/loginPage.js" async defer></script>
+  </body>
+</html>

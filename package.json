@@ -2,24 +2,17 @@
   "name": "esep-scenario-tool",
   "version": "1.0.0",
   "description": "",
-  "main": "pages/auth/index.html",
+  "main": "public/index.html",
   "scripts": {
-    "start": "parcel pages/*/*.html --open",
-    "build": "parcel build pages/*/*.html --out-dir public",
-    "deploy": "firebase deploy",
-    "firebase-test": "firebase serve"
+    "start": "firebase serve",
+    "deploy": "firebase deploy"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thaenor/scenario-tool.git"
   },
-  "dependencies": {
-    "firebase": "7.14.2"
-  },
-  "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "keywords": [],
   "author": "Francisco Santos",
   "license": "ISC",

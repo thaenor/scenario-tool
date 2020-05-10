@@ -44,7 +44,7 @@ function getPassword() {
 }
 
 function goToMain() {
-  window.location.replace("/mainmenu.html");
+  window.location.replace("/main/index.html");
 }
 
 // Firebase stuff

@@ -2,7 +2,7 @@
   "name": "esep-scenario-tool",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "pages/auth/index.html",
   "scripts": {
     "start": "parcel *.html --open",
     "build": "parcel build *.html"

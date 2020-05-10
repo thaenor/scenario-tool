@@ -1,0 +1,5 @@
+NOTES
+
+config redirects - https://firebase.google.com/docs/hosting/full-config#redirects
+
+simulate locally - https://firebase.google.com/docs/hosting/deploying#emulate_your_project_using_local_http_functions

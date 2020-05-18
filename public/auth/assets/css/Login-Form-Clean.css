@@ -67,3 +67,8 @@
   opacity: 1;
   text-decoration: none;
 }
+
+.login-error-message {
+  color: rgb(194, 39, 39);
+  text-align: center;
+}

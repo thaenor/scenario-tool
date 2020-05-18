@@ -9,7 +9,10 @@ var firebaseConfig = {
 };
 var signInBtn = document.getElementById("signInBtn");
 var loginBtn = document.getElementById("loginBtn");
+var errorMessageLabel = document.getElementById('login-error-message');
 var signInGoogleBtn = document.getElementById("signInGoogleBtn");
+var emailFormField = document.getElementById("login-form-email");
+var passwordFormField = document.getElementById("login-form-password");
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -23,25 +26,47 @@ provider.setCustomParameters({
 
 // Register Events
 signInBtn.addEventListener("click", e => {
+  clearErrorMessage();
   createNewUser(getEmail(), getPassword());
 });
 loginBtn.addEventListener("click", e => {
+  clearErrorMessage();
   loginExistingUser(getEmail(), getPassword());
 });
 signInGoogleBtn.addEventListener("click", e => {
+  clearErrorMessage();
   loginWithGoogle();
 });
 
 // Helper functions
 function getEmail() {
-  return document.getElementById("login-form-email").value;
+  return passwordFormField.value;
 }
+
 function getPassword() {
-  return document.getElementById("login-form-password").value;
+  return emailFormField.value;
 }
 
 function goToMain() {
   window.location.replace("/main");
+}
+
+function storeUserData(string_json_data) {
+  localStorage.clear();
+  localStorage.setItem('user_data', string_json_data);
+}
+
+function displayErrorMessage(message) {
+  errorMessageLabel.append(message);
+}
+
+function clearErrorMessage() {
+  errorMessageLabel.innerHTML = "";
+}
+
+function clearForm() {
+  emailFormField.value = '';
+  passwordFormField.value = '';
 }
 
 // Firebase stuff
@@ -50,15 +75,13 @@ function createNewUser(email, password) {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(success => {
-      console.log("register success");
+      storeUserData(JSON.stringify(success.user));
+      clearForm();
       goToMain();
     })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-      debugger;
+    .catch(function (error) {
+      displayErrorMessage(error.message);
+      clearForm();
     });
 }
 
@@ -67,31 +90,37 @@ function loginExistingUser(email, password) {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(success => {
-      console.log("login success");
+      storeUserData(JSON.stringify(success.user))
       goToMain();
     })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-      debugger;
+    .catch(function (error) {
+      displayErrorMessage(error.message);
+      clearForm();
     });
 }
 
+/**
+ * Data received in the payload
+ * user.displayName
+ * user.email
+ * user.emailVerified
+ * user.photoURL
+ * user.isAnonymous
+ * user.uid
+ * user.providerData;
+ */
 function loginWithGoogle() {
   firebase
     .auth()
     .signInWithPopup(provider)
-    .then(function(result) {
-      // This gives you a Google Access Token.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
+    .then(function (result) {
+      var user = JSON.stringify(result.user);
+      localStorage.setItem('user_data', user);
+      localStorage.setItem('GoogleAccessToken',result.credential.accessToken);
       goToMain();
     })
-    .catch(e => {
-      console.error(e);
-      debugger;
+    .catch(error => {
+      displayErrorMessage(error.message);
+      clearForm();
     });
 }

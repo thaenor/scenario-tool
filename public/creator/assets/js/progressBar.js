@@ -7,10 +7,8 @@ let state = {
 
 $('.steps-progressbar li').click(e => {
   let target = e.currentTarget.id;
-  console.log(target);
   let currentList = getCurrentList(target.substring(0, 3));
   let currentIndex = Number(target.slice(-1));
-  console.log(currentIndex);
 
   currentList.forEach(item => {
     if (Number(item.slice(-1)) < currentIndex) {
@@ -34,7 +32,6 @@ $('.steps-progressbar li').click(e => {
 function getCurrentList(listName) {
   for (let key in state) {
     if (key === listName) {
-      console.log(state[key]);
       return state[key];
     }
   }

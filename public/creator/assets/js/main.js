@@ -13,6 +13,7 @@ let moneyGood = 'money-good';
 let statusBad = 'bad';
 let statusMed = 'medium';
 let statusGood = 'good';
+let current_cognitive, current_memory, current_physical, current_economic;
 
 function toggleSelection(target, status, others) {
   switch (status) {
@@ -31,6 +32,23 @@ function toggleSelection(target, status, others) {
 
   $(`#${others[0]}`).css('background-color', '#dddddd');
   $(`#${others[1]}`).css('background-color', '#dddddd');
+
+  switch (target) {
+    case (cogBad || cogMed || cogGood):
+      current_cognitive = status;
+      break;
+    case (memBad || memMed || memGood):
+      current_memory = status;
+      break;
+    case (phyBad || phyMed || phyGood):
+      current_physical = status;
+      break;
+    case (moneyBad || moneyMed || moneyGood):
+      current_economic = status;
+      break;
+    default:
+      break;
+  }
 }
 
 $('#semaphore-selection-status .badge').click(function() {

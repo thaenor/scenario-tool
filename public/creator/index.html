@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Dark-NavBar.css">
-    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
-    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
 </head>
 
 <body class="html-content">
@@ -42,11 +42,13 @@
         <div class="row">
             <div class="col-md-3 col-xl-4"><img class="img-fluid" id="image-avatar" style="margin-top: 30px;width: 150px;"><input type="file" id="image-selector" onchange="previewFile()">
                 <section>
-                    <h5 id="scenario-persona-name" style="margin-top: 5px;" contenteditable="true">Amélia Sousa</h5><button class="btn btn-primary" id="main-data" type="button" data-toggle="modal" data-target="#scenario-modal-main-description">Editar</button></section>
+                    <h5 id="scenario-persona-name" style="margin-top: 5px;" contenteditable="true">Amélia Sousa</h5>
+                    <section id="section-main-data"></section><button class="btn btn-primary" id="main-data" type="button" data-toggle="modal" data-target="#scenario-modal-main-description">Editar</button></section>
             </div>
             <div class="col-md-3 col-lg-4 col-xl-4" style="background-color: #f2f8fc;">
                 <section>
-                    <h2 style="font-size: medium;color: #0188A5;padding-top: 10px;">Acerca</h2><button class="btn btn-primary" id="about-section" type="button" data-toggle="modal" data-target="#scenario-modal-about">Editar</button></section>
+                    <h2 style="font-size: medium;color: #0188A5;padding-top: 10px;">Acerca</h2>
+                    <section id="section-about"></section><button class="btn btn-primary" id="about-section" type="button" data-toggle="modal" data-target="#scenario-modal-about">Editar</button></section>
             </div>
             <div class="col-md-3 col-lg-5 col-xl-4">
                 <h2 style="color: #0188A5;font-size: medium;padding-top: 10px;">Capacidade</h2>
@@ -76,7 +78,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <section>
-                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Dificuldades e limitações</h3><button class="btn btn-primary" id="dificulties-section" type="button" data-toggle="modal" data-target="#scenario-modal-limitations">Editar</button></section>
+                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Dificuldades e limitações</h3>
+                        <section id="section-limitations"></section><button class="btn btn-primary" id="dificulties-section" type="button" data-toggle="modal" data-target="#scenario-modal-limitations">Editar</button></section>
                 </div>
             </div>
             <div class="row">
@@ -91,7 +94,8 @@
                                 <li id="phy-step-4"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
                                 <li id="phy-step-5"><i class="fas fa-walking" style="font-size: 20px;"></i></li>
                             </ul>
-                        </div><button class="btn btn-primary" id="phy-section" type="button" data-toggle="modal" data-target="#scenario-modal-physical">Editar</button></section>
+                        </div>
+                        <section id="section-physical"></section><button class="btn btn-primary" id="phy-section" type="button" data-toggle="modal" data-target="#scenario-modal-physical">Editar</button></section>
                 </div>
                 <div class="col-md-3">
                     <section>
@@ -104,7 +108,8 @@
                                 <li id="emo-step-4"><i class="far fa-smile" style="font-size: 20px;"></i></li>
                                 <li id="emo-step-5"><i class="far fa-grin-beam" style="font-size: 20px;"></i></li>
                             </ul>
-                        </div><button class="btn btn-primary" id="emo-section" type="button" data-toggle="modal" data-target="#scenario-modal-emotional">Editar</button></section>
+                        </div>
+                        <section id="section-emotional"></section><button class="btn btn-primary" id="emo-section" type="button" data-toggle="modal" data-target="#scenario-modal-emotional">Editar</button></section>
                 </div>
                 <div class="col-md-3">
                     <section>
@@ -117,7 +122,8 @@
                                 <li id="soc-step-4" class="active"><i class="fas fa-user-friends" style="font-size: 20px;"></i></li>
                                 <li id="soc-step-5"><i class="fas fa-users" style="font-size: 20px;"></i></li>
                             </ul>
-                        </div><button class="btn btn-primary" id="soc-section" type="button" data-toggle="modal" data-target="#scenario-modal-social">Editar</button></section>
+                        </div>
+                        <section id="section-social"></section><button class="btn btn-primary" id="soc-section" type="button" data-toggle="modal" data-target="#scenario-modal-social">Editar</button></section>
                 </div>
                 <div class="col-md-3">
                     <section>
@@ -130,7 +136,8 @@
                                 <li id="fam-step-4"><i class="fas fa-user-friends" style="font-size: 20px;"></i></li>
                                 <li id="fam-step-5"><i class="fas fa-users" style="font-size: 20px;"></i></li>
                             </ul>
-                        </div><button class="btn btn-primary" id="fam-section" type="button" data-toggle="modal" data-target="#scenario-modal-family">Editar</button></section>
+                        </div>
+                        <section id="section-family"></section><button class="btn btn-primary" id="fam-section" type="button" data-toggle="modal" data-target="#scenario-modal-family">Editar</button></section>
                 </div>
             </div>
         </div>
@@ -271,14 +278,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <script src="assets/js/Quill-Text-Editor.js"></script>
-    <script src="assets/js/main.js"></script>
     <script src="assets/js/progressBar.js"></script>
-    <script src="assets/js/firebase-init.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/firebase_init.js"></script>
 </body>
 
 </html>

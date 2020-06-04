@@ -4,6 +4,7 @@ let state = {
   soc: ['soc-step-1', 'soc-step-2', 'soc-step-3', 'soc-step-4', 'soc-step-5'],
   fam: ['fam-step-1', 'fam-step-2', 'fam-step-3', 'fam-step-4', 'fam-step-5']
 };
+let current_phy = 3, current_emo = 3, current_soc = 3, current_fam = 3;
 
 $('.steps-progressbar li').click(e => {
   let target = e.currentTarget.id;
@@ -27,6 +28,24 @@ $('.steps-progressbar li').click(e => {
         .removeClass('active');
     }
   });
+
+  switch (currentList) {
+    case 'phy':
+      current_phy = Number(target[target.length -1]);
+      break;
+    case 'emo':
+      current_emo = Number(target[target.length -1]);
+      break;
+    case 'soc':
+      current_soc = Number(target[target.length -1]);
+      break;
+    case 'fam':
+      current_fam = Number(target[target.length -1]);
+      break;
+  
+    default:
+      break;
+  }
 });
 
 function getCurrentList(listName) {

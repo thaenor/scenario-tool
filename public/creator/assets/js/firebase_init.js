@@ -15,10 +15,23 @@ var db = firebase.firestore();
 $("#firebase-sync").click(e => {
     let title = $('#scenario-title').val();
     let name = $('#scenario-persona-name').val();
+    //TODO: check for nulls
     let scenario_contents = {
         title,
         name,
         avatar: "", //TODO
+        capabilities: {
+            cognitive: current_cognitive,
+            memory: current_memory, //BUG: find out why this is never set
+            physical: current_physical,
+            economic: current_economic
+        },
+        profile: {
+            physical: current_phy,
+            emotional: current_emo,
+            social: current_soc,
+            family: current_fam
+        },
         main_description_content,
         about_content,
         limitations_content,
@@ -27,7 +40,7 @@ $("#firebase-sync").click(e => {
         social_content,
         family_content
     };
-    
+    debugger;
     db.collection("scenarios").add(scenario_contents)
     .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);

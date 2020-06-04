@@ -35,11 +35,32 @@ $(document).ready(function () {
   quill_social = new Quill('#scenario-modal-social-editor', qOpt);
   quill_family = new Quill('#scenario-modal-family-editor', qOpt);
 
-  $('#scenario-modal-main-description-get-content').click(e => { main_description_content = quill_main_description.root.innerHTML; });
-  $('#scenario-modal-about-get-content').click(e => { about_content = quill_about.root.innerHTML; });
-  $('#scenario-modal-limitations-get-content').click(e => { limitations_content = quill_limitations.root.innerHTML; });
-  $('#scenario-modal-physical-get-content').click(e => { physical_content = quill_physical.root.innerHTML; });
-  $('#scenario-modal-emotional-get-content').click(e => { emotional_content = quill_emotional.root.innerHTML; });
-  $('#scenario-modal-social-get-content').click(e => { social_content = quill_social.root.innerHTML; });
-  $('#scenario-modal-family-get-content').click(e => { family_content = quill_family.root.innerHTML; });
+  $('#scenario-modal-main-description-get-content').click(e => { 
+      main_description_content = quill_main_description.root.innerHTML;
+      $("#section-main-data").html(main_description_content);
+  });
+  $('#scenario-modal-about-get-content').click(e => { 
+      about_content = quill_about.root.innerHTML;
+      $('#section-about').html(about_content);
+  });
+  $('#scenario-modal-limitations-get-content').click(e => { 
+      limitations_content = quill_limitations.root.innerHTML;
+      $('#section-limitations').html(limitations_content);
+  });
+  $('#scenario-modal-physical-get-content').click(e => { 
+      physical_content = quill_physical.root.innerHTML; 
+      $('#section-physical').html(physical_content);
+  });
+  $('#scenario-modal-emotional-get-content').click(e => { 
+      emotional_content = quill_emotional.root.innerHTML;
+      $('#section-emotional').html(emotional_content);
+  });
+  $('#scenario-modal-social-get-content').click(e => { 
+      social_content = quill_social.root.innerHTML;
+      $('#section-social').html(social_content);
+  });
+  $('#scenario-modal-family-get-content').click(e => { 
+      family_content = quill_family.root.innerHTML;
+      $('#section-family').html(family_content);
+  });
 });

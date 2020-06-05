@@ -34,16 +34,24 @@ function toggleSelection(target, status, others) {
   $(`#${others[1]}`).css('background-color', '#dddddd');
 
   switch (target) {
-    case (cogBad || cogMed || cogGood):
+    case cogBad:
+    case cogMed:
+    case cogGood:
       current_cognitive = status;
       break;
-    case (memBad || memMed || memGood):
+    case memBad:
+    case memMed:
+    case memGood:
       current_memory = status;
       break;
-    case (phyBad || phyMed || phyGood):
+    case phyBad:
+    case phyMed: 
+    case phyGood:
       current_physical = status;
       break;
-    case (moneyBad || moneyMed || moneyGood):
+    case moneyBad:
+    case moneyMed:
+    case moneyGood:
       current_economic = status;
       break;
     default:

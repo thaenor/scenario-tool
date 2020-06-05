@@ -10,6 +10,7 @@ $('.steps-progressbar li').click(e => {
   let target = e.currentTarget.id;
   let currentList = getCurrentList(target.substring(0, 3));
   let currentIndex = Number(target.slice(-1));
+  let category_name = currentList[0].substring(0,3);
 
   currentList.forEach(item => {
     if (Number(item.slice(-1)) < currentIndex) {
@@ -29,7 +30,7 @@ $('.steps-progressbar li').click(e => {
     }
   });
 
-  switch (currentList) {
+  switch (category_name) {
     case 'phy':
       current_phy = Number(target[target.length -1]);
       break;
@@ -42,7 +43,6 @@ $('.steps-progressbar li').click(e => {
     case 'fam':
       current_fam = Number(target[target.length -1]);
       break;
-  
     default:
       break;
   }

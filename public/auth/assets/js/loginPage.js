@@ -1,12 +1,3 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyC9DZtmJ_bDrC0YkOxVWF2S2jP4gpX06f8",
-  authDomain: "scenario-tool.firebaseapp.com",
-  databaseURL: "https://scenario-tool.firebaseio.com",
-  projectId: "scenario-tool",
-  storageBucket: "scenario-tool.appspot.com",
-  messagingSenderId: "75545633744",
-  appId: "1:75545633744:web:e1b43c7440c2290d020fd5"
-};
 var signInBtn = document.getElementById("signInBtn");
 var loginBtn = document.getElementById("loginBtn");
 var errorMessageLabel = document.getElementById('login-error-message');
@@ -15,8 +6,8 @@ var emailFormField = document.getElementById("login-form-email");
 var passwordFormField = document.getElementById("login-form-password");
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-var provider = new firebase.auth.GoogleAuthProvider();
+//firebase.initializeApp(firebaseConfig);
+//var provider = new firebase.auth.GoogleAuthProvider();
 firebase.auth().languageCode = "pt";
 provider.addScope("profile");
 provider.addScope("email");

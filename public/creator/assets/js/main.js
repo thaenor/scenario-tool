@@ -13,7 +13,10 @@ let moneyGood = 'money-good';
 let statusBad = 'bad';
 let statusMed = 'medium';
 let statusGood = 'good';
-let current_cognitive, current_memory, current_physical, current_economic;
+let current_cognitive = 0, 
+    current_memory = 0, 
+    current_physical = 0,
+    current_economic = 0;
 
 function toggleSelection(target, status, others) {
   switch (status) {

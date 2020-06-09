@@ -1,5 +1,17 @@
-let quill_main_description, quill_about, quill_limitations, quill_physical, quill_emotional, quill_social, quill_family;
-let main_description_content, about_content, limitations_content, physical_content, emotional_content, social_content, family_content;
+let quill_main_description,
+  quill_about,
+  quill_limitations,
+  quill_physical,
+  quill_emotional,
+  quill_social,
+  quill_family;
+let main_description_content = "",
+  about_content = "",
+  limitations_content = "",
+  physical_content = "",
+  emotional_content = "",
+  social_content = "",
+  family_content = "";
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'], // toggled buttons
   ['blockquote', 'code-block'],

@@ -33,8 +33,8 @@ $("#firebase-sync").click(e => {
     .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
     })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
     });
 });
 
@@ -48,37 +48,37 @@ $("#firebase-sync").click(e => {
 // });
 
 function firestore_upload(image) {
-    let storageRef = firebase.storage().ref();
-    let img_ref = storageRef.child(image.name);
-    let imgPath = `images/${image.name}`;
-    let uploadTask = storageRef.child(imgPath).put(image);
-  
-    // Register three observers:
-    // 1. 'state_changed' observer, called any time the state changes
-    // 2. Error observer, called on failure
-    // 3. Completion observer, called on successful completion
-    uploadTask.on('state_changed', function (snapshot) {
-      // Observe state change events such as progress, pause, and resume
-      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.PAUSED: // or 'paused'
-          console.log('Upload is paused');
-          break;
-        case firebase.storage.TaskState.RUNNING: // or 'running'
-          console.log('Upload is running');
-          break;
-      }
-    }, function (error) {
-      // Handle unsuccessful uploads
-      console.error(error);
-    }, function () {
-      // Handle successful uploads on complete
-      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-        console.log('File available at', downloadURL);
-        avatar_url = downloadURL;
-      });
+  let storageRef = firebase.storage().ref();
+  let img_ref = storageRef.child(image.name);
+  let imgPath = `images/${image.name}`;
+  let uploadTask = storageRef.child(imgPath).put(image);
+
+  // Register three observers:
+  // 1. 'state_changed' observer, called any time the state changes
+  // 2. Error observer, called on failure
+  // 3. Completion observer, called on successful completion
+  uploadTask.on('state_changed', function (snapshot) {
+    // Observe state change events such as progress, pause, and resume
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function (error) {
+    // Handle unsuccessful uploads
+    console.error(error);
+  }, function () {
+    // Handle successful uploads on complete
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+      console.log('File available at', downloadURL);
+      avatar_url = downloadURL;
     });
-  }
+  });
+}

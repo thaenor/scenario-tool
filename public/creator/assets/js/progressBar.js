@@ -8,6 +8,10 @@ let current_phy = 3, current_emo = 3, current_soc = 3, current_fam = 3;
 
 $('.steps-progressbar li').click(e => {
   let target = e.currentTarget.id;
+  set_progress_bar(target);
+});
+
+function set_progress_bar(target) {
   let currentList = getCurrentList(target.substring(0, 3));
   let currentIndex = Number(target.slice(-1));
   let category_name = currentList[0].substring(0,3);
@@ -46,7 +50,7 @@ $('.steps-progressbar li').click(e => {
     default:
       break;
   }
-});
+}
 
 function getCurrentList(listName) {
   for (let key in state) {

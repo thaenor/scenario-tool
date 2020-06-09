@@ -1,22 +1,22 @@
-let cogBad = 'cognitive-bad';
-let cogMed = 'cognitive-medium';
-let cogGood = 'cognitive-good';
-let memBad = 'memory-bad';
-let memMed = 'memory-medium';
-let memGood = 'memory-good';
-let phyBad = 'physical-bad';
-let phyMed = 'physical-medium';
-let phyGood = 'physical-good';
-let moneyBad = 'money-bad';
-let moneyMed = 'money-medium';
-let moneyGood = 'money-good';
-let statusBad = 'bad';
-let statusMed = 'medium';
-let statusGood = 'good';
-let current_cognitive = 0, 
-    current_memory = 0, 
-    current_physical = 0,
-    current_economic = 0;
+const cogBad = 'cognitive-bad';
+const cogMed = 'cognitive-medium';
+const cogGood = 'cognitive-good';
+const memBad = 'memory-bad';
+const memMed = 'memory-medium';
+const memGood = 'memory-good';
+const phyBad = 'physical-bad';
+const phyMed = 'physical-medium';
+const phyGood = 'physical-good';
+const moneyBad = 'money-bad';
+const moneyMed = 'money-medium';
+const moneyGood = 'money-good';
+const statusBad = 'bad';
+const statusMed = 'medium';
+const statusGood = 'good';
+let current_cognitive = "", 
+    current_memory = "", 
+    current_physical = "",
+    current_economic = "";
 
 function toggleSelection(target, status, others) {
   switch (status) {
@@ -63,44 +63,60 @@ function toggleSelection(target, status, others) {
 }
 
 $('#semaphore-selection-status .badge').click(function() {
-  switch (this.id) {
+  toggle_capacity_badge(this.id);
+});
+
+function toggle_capacity_badge(id){
+  switch (id) {
     case cogBad:
       toggleSelection(cogBad, statusBad, [cogMed, cogGood]);
+      current_cognitive = id;
       break;
     case cogMed:
       toggleSelection(cogMed, statusMed, [cogBad, cogGood]);
+      current_cognitive = id;
       break;
     case cogGood:
       toggleSelection(cogGood, statusGood, [cogBad, cogMed]);
+      current_cognitive = id;
       break;
     case memBad:
       toggleSelection(memBad, statusBad, [memMed, memGood]);
+      current_memory = id;
       break;
     case memMed:
       toggleSelection(memMed, statusMed, [memBad, memGood]);
+      current_memory = id;
       break;
     case memGood:
       toggleSelection(memGood, statusGood, [memBad, memMed]);
+      current_memory = id;
       break;
     case phyBad:
       toggleSelection(phyBad, statusBad, [phyMed, phyGood]);
+      current_physical = id;
       break;
     case phyMed:
       toggleSelection(phyMed, statusMed, [phyBad, phyGood]);
+      current_physical = id;
       break;
     case phyGood:
       toggleSelection(phyGood, statusGood, [phyBad, phyMed]);
+      current_physical = id;
       break;
     case moneyBad:
       toggleSelection(moneyBad, statusBad, [moneyMed, moneyGood]);
+      current_economic = id;
       break;
     case moneyMed:
       toggleSelection(moneyMed, statusMed, [moneyBad, moneyGood]);
+      current_economic = id;
       break;
     case moneyGood:
       toggleSelection(moneyGood, statusGood, [moneyBad, moneyMed]);
+      current_economic = id;
       break;
     default:
       break;
   }
-});
+}

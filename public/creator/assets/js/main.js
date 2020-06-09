@@ -13,10 +13,10 @@ const moneyGood = 'money-good';
 const statusBad = 'bad';
 const statusMed = 'medium';
 const statusGood = 'good';
-let current_cognitive = "", 
-    current_memory = "", 
-    current_physical = "",
-    current_economic = "";
+let current_cognitive = '',
+  current_memory = '',
+  current_physical = '',
+  current_economic = '';
 
 function toggleSelection(target, status, others) {
   switch (status) {
@@ -48,7 +48,7 @@ function toggleSelection(target, status, others) {
       current_memory = status;
       break;
     case phyBad:
-    case phyMed: 
+    case phyMed:
     case phyGood:
       current_physical = status;
       break;
@@ -62,11 +62,11 @@ function toggleSelection(target, status, others) {
   }
 }
 
-$('#semaphore-selection-status .badge').click(function() {
+$('#semaphore-selection-status .badge').click(function () {
   toggle_capacity_badge(this.id);
 });
 
-function toggle_capacity_badge(id){
+function toggle_capacity_badge(id) {
   switch (id) {
     case cogBad:
       toggleSelection(cogBad, statusBad, [cogMed, cogGood]);

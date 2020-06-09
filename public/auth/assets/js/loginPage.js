@@ -1,30 +1,30 @@
-var signInBtn = document.getElementById("signInBtn");
-var loginBtn = document.getElementById("loginBtn");
+var signInBtn = document.getElementById('signInBtn');
+var loginBtn = document.getElementById('loginBtn');
 var errorMessageLabel = document.getElementById('login-error-message');
-var signInGoogleBtn = document.getElementById("signInGoogleBtn");
-var emailFormField = document.getElementById("login-form-email");
-var passwordFormField = document.getElementById("login-form-password");
+var signInGoogleBtn = document.getElementById('signInGoogleBtn');
+var emailFormField = document.getElementById('login-form-email');
+var passwordFormField = document.getElementById('login-form-password');
 
 // Initialize Firebase
 //firebase.initializeApp(firebaseConfig);
 //var provider = new firebase.auth.GoogleAuthProvider();
-firebase.auth().languageCode = "pt";
-provider.addScope("profile");
-provider.addScope("email");
+firebase.auth().languageCode = 'pt';
+provider.addScope('profile');
+provider.addScope('email');
 provider.setCustomParameters({
-  login_hint: "user@example.com"
+  login_hint: 'user@example.com',
 });
 
 // Register Events
-signInBtn.addEventListener("click", e => {
+signInBtn.addEventListener('click', (e) => {
   clearErrorMessage();
   createNewUser(getEmail(), getPassword());
 });
-loginBtn.addEventListener("click", e => {
+loginBtn.addEventListener('click', (e) => {
   clearErrorMessage();
   loginExistingUser(getEmail(), getPassword());
 });
-signInGoogleBtn.addEventListener("click", e => {
+signInGoogleBtn.addEventListener('click', (e) => {
   clearErrorMessage();
   loginWithGoogle();
 });
@@ -39,7 +39,7 @@ function getPassword() {
 }
 
 function goToMain() {
-  window.location.replace("/main");
+  window.location.replace('/main');
 }
 
 function storeUserData(string_json_data) {
@@ -52,7 +52,7 @@ function displayErrorMessage(message) {
 }
 
 function clearErrorMessage() {
-  errorMessageLabel.innerHTML = "";
+  errorMessageLabel.innerHTML = '';
 }
 
 function clearForm() {
@@ -65,7 +65,7 @@ function createNewUser(email, password) {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then(success => {
+    .then((success) => {
       storeUserData(JSON.stringify(success.user));
       clearForm();
       goToMain();
@@ -80,8 +80,8 @@ function loginExistingUser(email, password) {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then(success => {
-      storeUserData(JSON.stringify(success.user))
+    .then((success) => {
+      storeUserData(JSON.stringify(success.user));
       goToMain();
     })
     .catch(function (error) {
@@ -107,10 +107,10 @@ function loginWithGoogle() {
     .then(function (result) {
       var user = JSON.stringify(result.user);
       localStorage.setItem('user_data', user);
-      localStorage.setItem('GoogleAccessToken',result.credential.accessToken);
+      localStorage.setItem('GoogleAccessToken', result.credential.accessToken);
       goToMain();
     })
-    .catch(error => {
+    .catch((error) => {
       displayErrorMessage(error.message);
       clearForm();
     });

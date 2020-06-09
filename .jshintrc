@@ -1,0 +1,11 @@
+{
+    "esversion"     : 6,
+    "esnext"        : false,
+    "funcscope"     : false,
+    "browser"       : true,
+    "devel"         : true,
+    "jquery"        : true,
+    "nonstandard"   :true,
+    "indent"        : 2,
+    "trailing"      : true
+}

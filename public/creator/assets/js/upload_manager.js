@@ -30,8 +30,16 @@ $('#firebase-sync').click((e) => {
   };
 
   if (is_loaded_doc()) {
-    //db.collection('scenarios').doc(get_doc_id()).get()
-    console.log('document already exists');
+    db.collection('scenarios')
+      .doc(get_doc_id())
+      .set(scenario_contents, { merge: true })
+      .then(function () {
+        console.log('Document successfully written!');
+      })
+      .catch(function (error) {
+        alert('sorry, I couldn\' save the scenario');
+        console.error('Error writing document: ', error);
+      });
   } else {
     db.collection('scenarios')
       .add(scenario_contents)
@@ -39,12 +47,17 @@ $('#firebase-sync').click((e) => {
         console.log('Document written with ID: ', docRef.id);
       })
       .catch(function (error) {
+        alert('sorry, I couldn\' save the scenario');
         console.error('Error adding document: ', error);
       });
   }
 });
 
 function firestore_upload(image) {
+  if (is_loaded_doc()) {
+    // no need to reupload the image, we can even use the same url
+    return true;
+  }
   let storageRef = firebase.storage().ref();
   let img_ref = storageRef.child(image.name);
   let imgPath = `images/${image.name}`;

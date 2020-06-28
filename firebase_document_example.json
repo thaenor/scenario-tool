@@ -1,0 +1,40 @@
+{
+    "title": "caso abc",
+    "name": "Jonh Doe",
+    "avatar": "url address",
+    "capabiltities": {
+        "cognitive": 1,
+        "guidance": 2,
+        "motor": 3,
+        "conscience": 0,
+        "learning": 2,
+        "economic": 3
+    },
+    "support": {
+        "social": 5,
+        "family": 3,
+        "emotional": 2
+    },
+    "selfcare": {
+        "feeding": 3,
+        "walking": 2,
+        "arrange": 2,
+        "shower": 1,
+        "sanitary": 3,
+        "medication": 2,
+        "transfer": 1,
+        "turn": 2,
+        "elevate": 3,
+        "dress": 1
+    },
+    "prose": {
+        "person-data": "...",
+        "summary": "...",
+        "background": "...",
+        "difficulties": "...",
+        "social": "...",
+        "family": "...",
+        "emotional": "...",
+        "additional": "..."
+    }
+}

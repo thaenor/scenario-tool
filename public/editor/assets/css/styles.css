@@ -1,0 +1,40 @@
+.badge {
+  width: 30px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.list-group-item {
+  padding-bottom: 5px;
+}
+
+.d-inline-block.float-left {
+}
+
+.badge.badge-primary.text-monospace {
+  background-color: #dddddd;
+}
+
+.document-title {
+  font-size: large;
+  color: #0188A5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.save-button {
+  width: 50px;
+  margin: 10px;
+  border-radius: 40%;
+}
+
+.save-button-container {
+  opacity: 0.5;
+}
+
+.save-button-container :hover {
+  box-shadow: silver 20px;
+  opacity: 1;
+  transform: scale(1.3);
+}
+

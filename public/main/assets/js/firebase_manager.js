@@ -32,7 +32,7 @@ function createCard(id, card_title, card_content) {
                     </button>
                     <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
                         <p class="text-center dropdown-header">Opções:</p>
-                        <a class="dropdown-item" role="presentation" href="/view?title=${id}">&nbsp;Ver</a>
+                        <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">&nbsp;Ver</a>
                         <a class="dropdown-item" role="presentation" href="/editor?title=${id}">&nbsp;Editar</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" role="presentation" href="#" onclick="removeDocument(${id})">&nbsp;Remover</a>

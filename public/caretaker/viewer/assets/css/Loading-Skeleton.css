@@ -1,0 +1,27 @@
+.text-template-block {
+  background-color: #EEE;
+  width: 70%;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.text-template-block-animation {
+  background: linear-gradient(258deg, #eeeeee, #8c8c8c);
+  background-size: 400% 400%;
+  -webkit-animation: LoadingTextAnimation 1s ease infinite;
+  -moz-animation: LoadingTextAnimation 1s ease infinite;
+  animation: LoadingTextAnimation 1s ease infinite;
+}
+
+@keyframes LoadingTextAnimation {
+  0% {
+    background-position: 82% 0%;
+  }
+  50% {
+    background-position: 19% 100%;
+  }
+  100% {
+    background-position: 82% 0%;
+  }
+}
+

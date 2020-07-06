@@ -10,3 +10,7 @@ $(document).ready(() => {
     }
   });
 });
+
+function setAvatar(url) {
+  $('#image-avatar').attr('src', url);
+}

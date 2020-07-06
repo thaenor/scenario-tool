@@ -3,12 +3,11 @@ $(document).ready(function () {
     //we are editing an existing doc
     let data = load_document_data();
   }
-
-  $('#save-button').click((e) => {
-    let scenario = getDocumentData();
-    saveNewDocData(scenario);
-  });
 });
+
+function areWeOpeningExistingDoc() {
+  return get_doc_id() ? true : false;
+}
 
 function renderDocument(doc) {
   $('#scenario-title').text(doc.title);
@@ -35,21 +34,8 @@ function populateSelfcare(data) {
 
 function populateSupport(data) {
   for (const area of Object.keys(data)) {
-    console.log(area);
-    console.log(data[area]);
     setSupport(area, data[area]);
   }
-}
-
-function populateProse(doc) {
-  quills.summary_quill.root.innerHTML = doc.summary;
-  quills.person_quill.root.innerHTML = doc.person;
-  quills.background_quill.root.innerHTML = doc.background;
-  quills.dificulties_quill.root.innerHTML = doc.difficulties;
-  quills.social_quill.root.innerHTML = doc.social;
-  quills.family_quill.root.innerHTML = doc.family;
-  quills.emotion_quill.root.innerHTML = doc.emotional;
-  quills.additional_quill.root.innerHTML = doc.additional;
 }
 
 function getDocumentData() {

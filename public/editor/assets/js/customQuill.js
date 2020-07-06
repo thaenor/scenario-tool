@@ -103,3 +103,14 @@ $(document).ready(() => {
     setProse('additional', quills.additional_quill.root.innerHTML);
   });
 });
+
+function populateProse(doc) {
+  quills.summary_quill.root.innerHTML = doc.summary;
+  quills.person_quill.root.innerHTML = doc.person;
+  quills.background_quill.root.innerHTML = doc.background;
+  quills.dificulties_quill.root.innerHTML = doc.difficulties;
+  quills.social_quill.root.innerHTML = doc.social;
+  quills.family_quill.root.innerHTML = doc.family;
+  quills.emotion_quill.root.innerHTML = doc.emotional;
+  quills.additional_quill.root.innerHTML = doc.additional;
+}

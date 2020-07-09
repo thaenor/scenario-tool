@@ -48,3 +48,7 @@ function populateProse(doc) {
   quills.dataQuill.root.innerHTML = doc.data;
   quills.evolutionQuill.root.innerHTML = doc.evolution;
 }
+
+function setProse(area, contents) {
+  docData.prose[area] = contents;
+}

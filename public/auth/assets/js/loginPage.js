@@ -5,9 +5,22 @@ var signInGoogleBtn = document.getElementById('signInGoogleBtn');
 var emailFormField = document.getElementById('login-form-email');
 var passwordFormField = document.getElementById('login-form-password');
 
+$('#logoutBtn').click((e) => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      console.log('Sign-out successful.');
+    })
+    .catch(function (error) {
+      console.error(error);
+      alert('An error happened.');
+    });
+});
+
 // Initialize Firebase
 //firebase.initializeApp(firebaseConfig);
-//var provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 firebase.auth().languageCode = 'pt';
 provider.addScope('profile');
 provider.addScope('email');

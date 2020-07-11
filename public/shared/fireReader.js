@@ -10,7 +10,9 @@ function get_doc_id() {
 
 function load_document_data() {
   let id = get_doc_id();
-  const doc_ref = db.collection('scenarios').doc(id);
+  let type = window.location.href.search("caretaker");
+  const collection = type !== -1 ? 'caretakers' : 'scenarios';
+  const doc_ref = db.collection(collection).doc(id);
 
   doc_ref
     .get()

@@ -20,7 +20,7 @@ $(document).ready(function () {
   
   function populateCapabilities(cap) {
     for (const area of Object.keys(cap)) {
-      setCapabiltities(area, cap[area]);
+      setParam(area, cap[area]);
     }
   }
   

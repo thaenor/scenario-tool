@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   $('#save-button').click((e) => {
     let scenario = getDocumentData();
-    saveNewDocData(scenario);
+    saveDocData(scenario);
   });
 });
 
@@ -15,9 +15,12 @@ function areWeOpeningExistingDoc() {
   return get_doc_id() ? true : false;
 }
 
-function saveNewDocData(scenario_contents) {
+function saveDocData(scenario_contents) {
+  const dbCollection =
+    scenario_contents.type === 'caretaker' ? 'caretakers' : 'scenarios';
+
   if (areWeOpeningExistingDoc()) {
-    db.collection('scenarios')
+    db.collection(dbCollection)
       .doc(get_doc_id())
       .set(scenario_contents)
       .then(function () {
@@ -28,7 +31,7 @@ function saveNewDocData(scenario_contents) {
         console.error('Error writing document: ', error);
       });
   } else {
-    db.collection('scenarios')
+    db.collection(dbCollection)
       .add(scenario_contents)
       .then(function (docRef) {
         console.log('Document written with ID: ', docRef.id);

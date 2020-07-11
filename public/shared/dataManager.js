@@ -46,6 +46,7 @@ function getDocumentData() {
     title,
     name,
     avatar,
+    type: 'patient',
     capabiltities: docData.capabilities || '',
     support: docData.support || '',
     selfcare: docData.selfcare || '',

@@ -5,7 +5,7 @@ const COLORS = {
   CLEAN: 'badge-primary',
 };
 
-function setCapabiltities(area, value) {
+function setParam(area, value) {
   if (docData.capabilities[area] === value) {
     docData.capabilities[area] = 0;
     clearIndicators(area);

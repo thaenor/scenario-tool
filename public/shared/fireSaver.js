@@ -27,7 +27,7 @@ function saveDocData(scenario_contents) {
         console.log('Document successfully written!');
       })
       .catch(function (error) {
-        alert("sorry, I couldn' save the scenario");
+        alert("Ocorreu um erro ao gravar o cenário. Volte ao menu principal e tente outra vez");
         console.error('Error writing document: ', error);
       });
   } else {
@@ -35,9 +35,28 @@ function saveDocData(scenario_contents) {
       .add(scenario_contents)
       .then(function (docRef) {
         console.log('Document written with ID: ', docRef.id);
+        if(dbCollection === 'scenarios'){
+          sessionStorage.setItem('scenario', docRef.id);
+          const nextSteps = confirm('Gostaria de adicionar um perfil de cuidador?');
+          const nextLocation = nextSteps ? '/caregiver/editor' : '/main';
+          window.location.replace(nextLocation);
+        }
+        if(dbCollection === 'caregivers') {
+          let scenario_id = sessionStorage.getItem('scenario');
+          if(scenario_id !== null) {
+            let caregiver_id = docRef.id;
+            let scene = db.collection('scenarios').doc(scenario_id);
+            scene.update({caregiver_id})
+              .then( () => console.log('updated'))
+              .catch( err => console.error(err) );
+            console.log(`doc ${caregiver_id} is now associated with scenario ${scenario_id}`);
+          }
+          alert('cuidador guardado com sucesso');
+          window.location.replace('/main');
+        }
       })
       .catch(function (error) {
-        alert("sorry, I couldn' save the scenario");
+        alert("Ocorreu um erro ao gravar o cenário. Volte ao menu principal e tente outra vez");
         console.error('Error adding document: ', error);
       });
   }
@@ -71,9 +90,7 @@ function firestore_upload(image) {
     },
     (error) => {
       console.error(error);
-      alert(
-        'something went wrong uploading the image - check the console for more info'
-      );
+      alert('Ocorreu um erro com o upload da imagem');
     },
     () => {
       // Handle successful uploads on complete

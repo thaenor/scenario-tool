@@ -17,7 +17,7 @@ function areWeOpeningExistingDoc() {
 
 function saveDocData(scenario_contents) {
   const dbCollection =
-    scenario_contents.type === 'caretaker' ? 'caretakers' : 'scenarios';
+    scenario_contents.type === 'caregiver' ? 'caregivers' : 'scenarios';
 
   if (areWeOpeningExistingDoc()) {
     db.collection(dbCollection)

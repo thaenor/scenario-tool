@@ -32,7 +32,7 @@ $(document).ready(function () {
       title,
       name,
       avatar,
-      type: 'caretaker',
+      type: 'caregiver',
       capabiltities: docData.capabilities || '',
       prose: docData.prose || '',
     };

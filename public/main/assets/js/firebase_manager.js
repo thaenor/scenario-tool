@@ -25,7 +25,7 @@ function getDocumentData(){
           db.collection('caregivers').doc(c_id).get()
           .then( c_doc => {
             caregiverDoc = c_doc.data();
-            const content = createCaregiverHeader(caregiverDoc.id, caregiverDoc.title);
+            const content = createCaregiverHeader(c_doc.id, caregiverDoc.title);
             $(`#firebase-caregiver-section-${doc.id}`).append(content);
           })
         }
@@ -50,7 +50,7 @@ function createCard(id, card_title, card_content) {
                   <p class="text-center dropdown-header">Opções do cenário:</p>
                   <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">&nbsp;Ver</a>
                   <a class="dropdown-item" role="presentation" href="/editor?title=${id}">&nbsp;Editar</a>
-                  <a class="dropdown-item" role="presentation" href="/#" onclick="duplicateDocument('scenario','${id}')">&nbsp;Duplicar</a>
+                  <a class="dropdown-item" role="presentation" href="#" onclick="duplicateDocument('scenario','${id}')">&nbsp;Duplicar</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item delete-btn" role="presentation" href="#" onclick="removeDocument('scenario','${id}')">&nbsp;Remover</a>
               </div>
@@ -77,7 +77,7 @@ function createCaregiverHeader(id, name) {
           <p class="text-center dropdown-header">Opções do cuidador:</p>
           <a class="dropdown-item" role="presentation" href="/caregiver/viewer?title=${id}">&nbsp;Ver</a>
           <a class="dropdown-item" role="presentation" href="/caregiver/editor?title=${id}">&nbsp;Editar</a>
-          <a class="dropdown-item" role="presentation" href="/#" onclick="duplicateDocument('caregiver','${id}')">&nbsp;Duplicar</a>
+          <a class="dropdown-item" role="presentation" href="#" onclick="duplicateDocument('caregiver','${id}')">&nbsp;Duplicar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item delete-btn" role="presentation" href="#" onclick="removeDocument('caregiver','${id}')">&nbsp;Remover</a>
       </div>

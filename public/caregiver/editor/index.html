@@ -44,6 +44,7 @@
                 <h1 id="scenario-title" style="font-size: large;color: #0188A5;padding-top: 20px;padding-bottom: 20px;" contenteditable="true">Insira nome do caso</h1>
             </div>
             <div class="col"><button class="btn btn-info text-white border rounded shadow-sm save-button" data-toggle="tooltip" data-bs-tooltip="" data-bs-hover-animate="rubberBand" id="save-button" type="button" title="Guardar"><i class="fas fa-save"></i></button></div>
+            <div class="col"><button class="btn btn-info text-white border rounded shadow-sm save-button" id="associate-button" type="button" data-toggle="modal" data-target="#scenario-associate-modal"><i class="fas fa-user"></i></button></div>            
         </div>
         <div class="row">
             <div class="col-md-3 col-xl-4" style="background-color: #f2f8fc;"><img class="img-fluid" id="image-avatar" src="assets/img/default.png" width="200px" height="250px"><input id="image-selector" type="file">
@@ -150,6 +151,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Beguin: Modal select scneario-->
+    <div class="modal fade" id="scenario-associate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <ul id="firebase-scenario-list" class="list-group">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End: Modal select scenario-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>

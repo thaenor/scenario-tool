@@ -8,7 +8,17 @@ $(document).ready(function () {
 
   $('#save-button').click((e) => {
     let scenario = getDocumentData();
+    if (typeof scenario.title !== 'string' || scenario.title === '') {
+      scenario.title = 'Cenário sem titulo';
+    }
     saveDocData(scenario);
+  });
+
+  $('#scenario-title').one('click', (e) => {
+    $('#scenario-title').html('');
+  });
+  $('#scenario-persona-name').one('click', (e) => {
+    $('#scenario-persona-name').html('');
   });
 });
 
@@ -48,7 +58,7 @@ function updateExistingDoc(contents) {
 }
 
 function createNewDoc(contents) {
-  contents.author = USER.name;
+  contents.author = USER;
   contents.created_at = firebase.firestore.FieldValue.serverTimestamp();
   contents.edited_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
@@ -64,8 +74,11 @@ function createNewDoc(contents) {
 }
 
 function nextSteps(docRef, caregiverList) {
-  sessionStorage.setItem(STORAGE.scenario, docRef.id);
-  sessionStorage.setItem(STORAGE.scenarionContents, caregiverList);
   const nextSteps = confirm(MESSAGES.save_scenario_next_steps);
-  window.location.replace(nextSteps ? ROUTES.caregiver.editor : ROUTES.main);
+
+  if (nextSteps) {
+    sessionStorage.setItem(STORAGE.scenario, docRef.id);
+    sessionStorage.setItem(STORAGE.scenarionContents, caregiverList);
+    nextSteps && window.location.replace(ROUTES.caregiver.editor);
+  }
 }

@@ -5,6 +5,11 @@
   },
   "hosting": {
     "public": "public",
+    "redirects": [{
+      "source": "/",
+      "destination": "/main",
+      "type": 301
+    }],
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-11">
                 <div>
-                    <h1 class="pulse animated document-title" id="scenario-title" contenteditable="true">WRITE THE CASE NAME HERE</h1>
+                    <h1 class="pulse animated document-title" id="scenario-title" contenteditable="true">Titulo do caso:</h1>
                 </div>
             </div>
             <div class="col-md-1 save-button-container"><button class="btn btn-info text-white border rounded shadow-sm save-button" data-toggle="tooltip" data-bs-tooltip="" data-bs-hover-animate="rubberBand" id="save-button" type="button" title="Guardar"><i class="fas fa-save"></i></button></div>
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-3 col-xl-3"><img class="img-fluid" id="image-avatar"><input id="image-selector" type="file">
                 <section>
-                    <h5 class="pulse animated" id="scenario-persona-name" style="margin-top: 5px;" contenteditable="true">PERSON NAME</h5>
+                    <h5 class="pulse animated" id="scenario-persona-name" style="margin-top: 5px;" contenteditable="true">Nome:</h5>
                 </section>
                 <div id="editor-person-data" class="editor-quill" style="height: 440px;"></div>
             </div>
@@ -261,7 +261,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="../firebase_init.js"></script>
+    <script src="../shared/firebase_init.js"></script>
+    <script src="../shared/firestoreImageHandler.js"></script>
     <script src="../shared/loginChecker.js"></script>
     <script src="../shared/utils.js"></script>
     <script src="assets/js/customQuill.js"></script>

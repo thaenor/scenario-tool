@@ -39,9 +39,9 @@ function getDocumentData() {
     support: docData.support || '',
     selfcare: docData.selfcare || '',
     prose: docData.prose || '',
-    created_at,
-    updated_at,
-    author
+    created_at: "",
+    updated_at: "",
+    author: ""
   };
 
   return scenario;

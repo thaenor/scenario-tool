@@ -20,8 +20,6 @@ function getDocumentData() {
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
         let scene = doc.data();
-        let c_id = scene.caregiver_id;
-
         let contenthtml = createCard(
           doc.id,
           scene.title,

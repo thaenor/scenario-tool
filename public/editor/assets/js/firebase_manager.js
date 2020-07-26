@@ -77,8 +77,8 @@ function nextSteps(docRef, caregiverList) {
   const nextSteps = confirm(MESSAGES.save_scenario_next_steps);
 
   if (nextSteps) {
-    sessionStorage.setItem(STORAGE.scenario, docRef.id);
-    sessionStorage.setItem(STORAGE.scenarionContents, caregiverList);
+    sessionStorage.setItem(STORAGE.scenario_id, docRef.id);
+    sessionStorage.setItem(STORAGE.scenario_contents, caregiverList);
     if (nextSteps) {
       window.location = ROUTES.caregiver.editor;
     }

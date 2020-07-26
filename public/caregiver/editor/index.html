@@ -44,7 +44,7 @@
                 <h1 id="scenario-title" style="font-size: large;color: #0188A5;padding-top: 20px;padding-bottom: 20px;" contenteditable="true">Insira nome do caso</h1>
             </div>
             <div class="col"><button class="btn btn-info text-white border rounded shadow-sm save-button" data-toggle="tooltip" data-bs-tooltip="" data-bs-hover-animate="rubberBand" id="save-button" type="button" title="Guardar"><i class="fas fa-save"></i></button></div>
-            <div class="col"><button class="btn btn-info text-white border rounded shadow-sm save-button" id="associate-button" type="button" data-toggle="modal" data-target="#scenario-associate-modal"><i class="fas fa-user"></i></button></div>            
+            <!-- <div class="col"><button class="btn btn-info text-white border rounded shadow-sm save-button" id="associate-button" type="button" data-toggle="modal" data-target="#scenario-associate-modal"><i class="fas fa-user"></i></button></div>             -->
         </div>
         <div class="row">
             <div class="col-md-3 col-xl-4" style="background-color: #f2f8fc;"><img class="img-fluid" id="image-avatar" src="assets/img/default.png" width="200px" height="250px"><input id="image-selector" type="file">
@@ -178,15 +178,15 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-    <script src="../../firebase_init.js"></script>
-    <script src="../../shared/loginChecker.js"></script>
-    <script src="assets/js/bs-init.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="../../shared/firebase_init.js"></script>
+    <script src="../../shared/loginChecker.js"></script>
+    <script src="../../shared/utils.js"></script>
+    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/customQuill.js"></script>
     <script src="../shared/docData.js"></script>
     <script src="../shared/ui.js"></script>
-    <script src="../../shared/fireReader.js"></script>
-    <script src="../../shared/fireSaver.js"></script>
+    <script src="assets/js/firebase_manager.js"></script>
     <script src="../shared/dataManager.js"></script>
 </body>
 

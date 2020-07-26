@@ -37,7 +37,7 @@ function getDocumentData() {
     .then((snapshot) => {
       if (snapshot.empty) {
         $('#id-firebase-content').append(
-          '<h1>Não foram encontrados cenários</h1>'
+          '<h3>Não foram encontrados cenários</h3>'
         );
       }
       snapshot.docs.map((doc) => {
@@ -54,7 +54,7 @@ function getDocumentData() {
     .catch((error) => {
       console.error(error);
       $('#id-firebase-content').append(
-        '<h1>Ocorreu um erro ao aceder aos cenários</h1>'
+        '<h3>Ocorreu um erro ao aceder aos cenários</h3>'
       );
       $('#id-firebase-content').append(`<span>Debug info: ${error}</span>`);
     });
@@ -102,6 +102,12 @@ function createCard(id, card_title, card_content, caregivers) {
     caregiverContent = 'Não há cuidadores associados';
   }
 
+  function createCaregiverFor(id) {
+    //TODO: wHY IS THSI NOT WOKRING
+    window.sessionStorage.setItem(STORAGE.scenario_id, id);
+    window.location = ROUTES.caregiver.editor;
+  }
+
   return `
         <div class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -126,7 +132,7 @@ function createCard(id, card_title, card_content, caregivers) {
                     </li>
                     <li class="list-group-item">
                         <span></span>
-                        <a href="/caregiver/editor?scenarioref=${id}" class="btn btn-success btn-circle ml-1" role="button">
+                        <a href="#" onclick="createCaregiverFor('${id}')" class="btn btn-success btn-circle ml-1" role="button">
                             <i class="fas fa-plus text-white"></i>
                         </a>
                     </li>

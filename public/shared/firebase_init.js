@@ -12,8 +12,8 @@ const FIRE = {
   caregivers: 'caregivers',
 };
 const STORAGE = {
-  scenarioId: 'scenarioId',
-  scenarionContents: 'scenarioContents',
+  scenario_id: 'scenarioId',
+  scenario_contents: 'scenarioContents',
   user_name: 'user_name',
 };
 const ROUTES = {

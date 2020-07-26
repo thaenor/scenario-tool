@@ -6,12 +6,12 @@ $(document).ready(function () {
   db = firebase.firestore();
   editMode = get_doc_id() ? true : false;
   editMode && load_document_data();
-  scenario_id = sessionStorage.getItem(STORAGE.scenario);
-  sessionStorage.removeItem(STORAGE.scenario);
+  scenario_id = sessionStorage.getItem(STORAGE.scenario_id);
+  sessionStorage.removeItem(STORAGE.scenario_id);
 
   if (typeof scenario_id !== 'string') {
     alert(MESSAGES.caregiver_needs_context);
-    window.location.replace = ROUTES.root;
+    window.location.replace(ROUTES.root);
   }
 
   $('#save-button').click((e) => {
@@ -76,7 +76,7 @@ function createNewDoc(contents) {
 
 function updateScenario(ref, caregiver_name) {
   let associated_caregivers = window.sessionStorage.getItem(
-    STORAGE.scenarionContents
+    STORAGE.scenario_contents
   );
 
   db.collection(FIRE.scenarios).doc(scenario_id).update({ caregivers });

@@ -1,8 +1,23 @@
 const db = firebase.firestore();
+firebase.auth().languageCode = 'pt';
 
 $(document).ready(function () {
   fillUsername(USER);
   getDocumentData();
+
+  $('#logout-btn').click(() => {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        alert('Sign-out successful.');
+        location.reload();
+      })
+      .catch(function (error) {
+        console.error(error);
+        alert('An error happened.');
+      });
+  });
 });
 
 function fillUsername(name) {
@@ -10,6 +25,8 @@ function fillUsername(name) {
     name = 'anónimo';
     $('#logout-btn').hide();
     $('#create-scenario-btn').hide();
+  } else {
+    $('#login-btn').hide();
   }
   $('#id-firebase-username').append(name);
 }
@@ -18,6 +35,11 @@ function getDocumentData() {
   db.collection('scenarios')
     .get()
     .then((snapshot) => {
+      if (snapshot.empty) {
+        $('#id-firebase-content').append(
+          '<h1>Não foram encontrados cenários</h1>'
+        );
+      }
       snapshot.docs.map((doc) => {
         let scene = doc.data();
         let contenthtml = createCard(
@@ -31,7 +53,10 @@ function getDocumentData() {
     })
     .catch((error) => {
       console.error(error);
-      alert('there has been an error - please check the console');
+      $('#id-firebase-content').append(
+        '<h1>Ocorreu um erro ao aceder aos cenários</h1>'
+      );
+      $('#id-firebase-content').append(`<span>Debug info: ${error}</span>`);
     });
 }
 

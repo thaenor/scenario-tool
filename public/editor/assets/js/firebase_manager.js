@@ -64,7 +64,7 @@ function createNewDoc(contents) {
   db.collection(FIRE.scenarios)
     .add(contents)
     .then(function (docRef) {
-      alert(MESSAGES.update_scenario_succes);
+      alert(MESSAGES.save_scenario_succes);
       nextSteps(docRef, contents.caregivers);
     })
     .catch(function (error) {
@@ -79,6 +79,8 @@ function nextSteps(docRef, caregiverList) {
   if (nextSteps) {
     sessionStorage.setItem(STORAGE.scenario, docRef.id);
     sessionStorage.setItem(STORAGE.scenarionContents, caregiverList);
-    nextSteps && window.location.replace(ROUTES.caregiver.editor);
+    if (nextSteps) {
+      window.location = ROUTES.caregiver.editor;
+    }
   }
 }

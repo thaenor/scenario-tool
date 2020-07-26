@@ -32,13 +32,13 @@ const ROUTES = {
     },
   },
   caregiver: {
-    viewer: 'caregiver/viewer',
-    editor: 'caregiver/editor',
+    viewer: '/caregiver/viewer',
+    editor: '/caregiver/editor',
     dynamic_viewer: (id) => {
-      return `caregiver/viewer?title=${id}`;
+      return `/caregiver/viewer?title=${id}`;
     },
     dynamic_editor: (id) => {
-      return `caregiver/editor?title=${id}`;
+      return `/caregiver/editor?title=${id}`;
     },
   },
 };
@@ -61,7 +61,7 @@ const USER = localStorage.getItem(STORAGE.user_name);
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.firestore().enablePersistence()
-  .catch(function(err) {
-      console.warn(err);
-  });
+// firebase.firestore().enablePersistence()
+//   .catch(function(err) {
+//       console.warn(err);
+//   });

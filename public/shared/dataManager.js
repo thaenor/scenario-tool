@@ -1,14 +1,3 @@
-$(document).ready(function () {
-  if (areWeOpeningExistingDoc()) {
-    //we are editing an existing doc
-    let data = load_document_data();
-  }
-});
-
-function areWeOpeningExistingDoc() {
-  return get_doc_id() ? true : false;
-}
-
 function renderDocument(doc) {
   $('#scenario-title').text(doc.title);
   $('#scenario-persona-name').text(doc.name);
@@ -46,11 +35,13 @@ function getDocumentData() {
     title,
     name,
     avatar,
-    type: 'patient',
     capabiltities: docData.capabilities || '',
     support: docData.support || '',
     selfcare: docData.selfcare || '',
     prose: docData.prose || '',
+    created_at,
+    updated_at,
+    author
   };
 
   return scenario;

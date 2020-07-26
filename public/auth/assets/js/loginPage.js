@@ -1,9 +1,9 @@
-var signInBtn = document.getElementById('signInBtn');
-var loginBtn = document.getElementById('loginBtn');
-var errorMessageLabel = document.getElementById('login-error-message');
-var signInGoogleBtn = document.getElementById('signInGoogleBtn');
-var emailFormField = document.getElementById('login-form-email');
-var passwordFormField = document.getElementById('login-form-password');
+let signInBtn = document.getElementById('signInBtn');
+let loginBtn = document.getElementById('loginBtn');
+let errorMessageLabel = document.getElementById('login-error-message');
+let signInGoogleBtn = document.getElementById('signInGoogleBtn');
+let emailFormField = document.getElementById('login-form-email');
+let passwordFormField = document.getElementById('login-form-password');
 
 $('#logoutBtn').click((e) => {
   firebase
@@ -118,12 +118,11 @@ function loginWithGoogle() {
     .auth()
     .signInWithPopup(provider)
     .then(function (result) {
-      var user = JSON.stringify(result.user);
-      localStorage.setItem('user_data', user);
-      localStorage.setItem('GoogleAccessToken', result.credential.accessToken);
+      localStorage.setItem(STORAGE.user_name, result.user.displayName);
       goToMain();
     })
     .catch((error) => {
+      console.error(error);
       displayErrorMessage(error.message);
       clearForm();
     });

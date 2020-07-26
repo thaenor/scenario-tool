@@ -31,6 +31,8 @@ $(document).ready(function () {
     let scenario = {
       title,
       name,
+      created_at,
+      updated_at,
       avatar,
       type: 'caregiver',
       capabiltities: docData.capabilities || '',

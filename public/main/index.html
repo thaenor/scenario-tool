@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body id="page-top">
@@ -24,24 +23,22 @@
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="d-inline-flex flex-row flex-grow-0 justify-content-end align-items-baseline flex-wrap"><a class="btn btn-light btn-sm" role="button" href="#" style="margin-right: 10px;">Logout</a><span id="id-firebase-username" class="mr-2 text-gray-600 small">Username</span></div>
+                                <div class="d-inline-flex flex-row flex-grow-0 justify-content-end align-items-baseline flex-wrap"><span id="id-firebase-username" class="mr-2 text-gray-600 small"></span><a id="logout-btn" class="btn btn-light btn-sm" role="button" href="#" style="margin-right: 10px;">Logout</a></div>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col">
                             <h3 class="text-dark mb-1">Main Menu</h3>
                         </div>
-                        <div class="col d-inline-flex flex-row justify-content-end">
-                            <a class="btn btn-link btn-sm" role="button" href="/editor" style="margin-right: 10px;">Criar Cenário</a>
-                            <a class="btn btn-link btn-sm" role="button" href="/caregiver/editor" style="margin-right: 10px;">Criar Cuidador</a>
-                        </div>
+                        <div class="col d-inline-flex justify-content-end justify-content-xl-end align-items-xl-center"> <a href="/editor"><button id="create-scenario-btn" class="btn btn-primary btn-sm" type="button" style="margin-bottom: 10px;">Criar Cenário</button></a></div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div id="id-firebase-content">
+                        <!--Card content-->
                     </div>
                 </div>
             </div>
@@ -56,7 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
     <script src="../firebase_init.js"></script>
-    <script src="./assets/js/firebase_manager.js"></script>
+    <script src="assets/js/index.js"></script>
 </body>
 
 </html>

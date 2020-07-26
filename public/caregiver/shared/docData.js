@@ -14,4 +14,7 @@ let docData = {
     data: '',
     evolution: '',
   },
+  author: "",
+  created_at: "",
+  updated_at: ""
 };

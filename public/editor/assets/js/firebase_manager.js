@@ -27,7 +27,7 @@ function load_document_data() {
     .doc(get_doc_id())
     .get()
     .then((doc) => {
-      doc.exits
+      doc.exists
         ? renderDocument(doc.data())
         : console.warn('Document not found');
     })
@@ -44,7 +44,7 @@ function saveDocData(scenario_contents) {
 }
 
 function updateExistingDoc(contents) {
-  contents.edited_at = firebase.firestore.FieldValue.serverTimestamp();
+  contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .doc(get_doc_id())
     .set(contents)
@@ -60,7 +60,7 @@ function updateExistingDoc(contents) {
 function createNewDoc(contents) {
   contents.author = USER;
   contents.created_at = firebase.firestore.FieldValue.serverTimestamp();
-  contents.edited_at = firebase.firestore.FieldValue.serverTimestamp();
+  contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .add(contents)
     .then(function (docRef) {

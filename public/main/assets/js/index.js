@@ -60,21 +60,14 @@ function getDocumentData() {
     });
 }
 
-function removeCaregiver(Ref) {
-  alert('Not implemented - look into deleting form subcollections');
-  return;
-  db.collection('scenarios')
-    .doc(Ref)
-    .delete()
-    .then(function () {
-      console.log('Document successfully deleted!');
-      //TODO: remove this dynamically to avoid unecessary load
-      location.reload();
-    })
-    .catch(function (error) {
-      console.error('Error removing document: ', error);
-      alert('there has been an error - please check the console');
-    });
+function createCaregiverFor(id) {
+  window.sessionStorage.setItem(STORAGE.scenario_id, id);
+  window.location = ROUTES.caregiver.editor;
+}
+
+function edit_caregiver(parent_ref, care_ref) {
+  window.sessionStorage.setItem(STORAGE.scenario_id, parent_ref);
+  window.location = ROUTES.caregiver.dynamic_editor(care_ref);
 }
 
 function removeScenario(Ref) {
@@ -92,20 +85,44 @@ function removeScenario(Ref) {
     });
 }
 
+function remove_scenario_reference(scenario_ref, ref, title) {
+  console.log(`remove_scenario_reference(${scenario_ref}, ${ref}, ${title})`);
+  db.collection(FIRE.scenarios)
+    .doc(scenario_ref)
+    .update({
+      caregivers: firebase.firestore.FieldValue.arrayRemove({
+        ref,
+        title,
+      }),
+    })
+    .then((suc) => console.log(suc))
+    .catch((e) => console.error(e));
+}
+
+function removeCaregiver(scenario_ref, ref, name) {
+  db.collection(FIRE.scenarios)
+    .doc(scenario_ref)
+    .collection(FIRE.caregivers)
+    .doc(ref)
+    .delete()
+    .then(function () {
+      console.log('Document successfully deleted!');
+      remove_scenario_reference(scenario_ref, ref, name);
+    })
+    .catch(function (error) {
+      console.error('Error removing document: ', error);
+      alert('there has been an error - please check the console');
+    });
+}
+
 function createCard(id, card_title, card_content, caregivers) {
   let caregiverContent = '';
   if (typeof caregivers !== 'undefined') {
     caregivers.forEach((c) => {
-      caregiverContent += addCareGiverContent(c.Name, c.Ref);
+      caregiverContent += addCareGiverContent(id, c.title, c.ref);
     });
   } else {
     caregiverContent = 'Não há cuidadores associados';
-  }
-
-  function createCaregiverFor(id) {
-    //TODO: wHY IS THSI NOT WOKRING
-    window.sessionStorage.setItem(STORAGE.scenario_id, id);
-    window.location = ROUTES.caregiver.editor;
   }
 
   return `
@@ -127,12 +144,10 @@ function createCard(id, card_title, card_content, caregivers) {
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">
                     ${caregiverContent}
-                    </li>
                     <li class="list-group-item">
                         <span></span>
-                        <a href="#" onclick="createCaregiverFor('${id}')" class="btn btn-success btn-circle ml-1" role="button">
+                        <a href="#" class="btn btn-success btn-circle ml-1" role="button" onclick="createCaregiverFor('${id}')">
                             <i class="fas fa-plus text-white"></i>
                         </a>
                     </li>
@@ -143,8 +158,9 @@ function createCard(id, card_title, card_content, caregivers) {
 `;
 }
 
-function addCareGiverContent(name, Ref) {
+function addCareGiverContent(parent, name, Ref) {
   return `
+  <li class="list-group-item">
     <div class="row">
         <div class="col"><span>${name}</span></div>
         <div class="col d-xl-flex flex-row justify-content-xl-end">
@@ -154,19 +170,20 @@ function addCareGiverContent(name, Ref) {
                 </span>
                 <span class="text-white text">Ver</span>
             </a>
-            <a href="/caregiver/editor?title=${Ref}" class="btn btn-info btn-icon-split" role="button">
+            <a href="#" onclick="edit_caregiver('${parent}','${Ref}')" class="btn btn-info btn-icon-split" role="button">
                 <span class="text-white-50 icon">
                     <i class="fas fa-pencil-alt"></i>
                 </span>
                 <span class="text-white text">Editar</span>
             </a>
-            <a onclick="removeCaregiver('${Ref}')" class="btn btn-danger btn-icon-split" role="button">
+            <a href="#" onclick="removeCaregiver('${parent}','${Ref}','${name}')" class="btn btn-danger btn-icon-split" role="button">
                 <span class="text-white-50 icon">
                     <i class="fas fa-trash"></i>
                 </span>
                 <span class="text-white text">Remover</span>
             </a>
         </div>
-    </div>
+     </div>
+    </li>
     `;
 }

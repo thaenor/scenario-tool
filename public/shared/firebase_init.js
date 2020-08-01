@@ -51,7 +51,9 @@ const USER = localStorage.getItem(STORAGE.user_name);
 
 firebase.initializeApp(firebaseConfig);
 
-// firebase.firestore().enablePersistence()
-//   .catch(function(err) {
-//       console.warn(err);
-//   });
+firebase
+  .firestore()
+  .enablePersistence()
+  .catch(function (err) {
+    console.warn(err);
+  });

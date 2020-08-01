@@ -26,7 +26,7 @@ function firestore_upload(image) {
     },
     (error) => {
       console.error(error);
-      alert('Ocorreu um erro com o upload da imagem');
+      alert(MESSAGES.image_upload_error);
     },
     () => {
       // Handle successful uploads on complete

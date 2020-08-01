@@ -2,6 +2,7 @@ let db;
 let editMode = false;
 
 $(document).ready(function () {
+  toggle_confirm_on_exit(true);
   db = firebase.firestore();
   editMode = get_doc_id() ? true : false;
   editMode && load_document_data();
@@ -11,7 +12,7 @@ $(document).ready(function () {
     if (typeof scenario.title !== 'string' || scenario.title === '') {
       scenario.title = 'Cenário sem titulo';
     }
-    saveDocData(scenario);
+    save_document(scenario);
   });
 
   $('#scenario-title').one('click', (e) => {
@@ -27,9 +28,7 @@ function load_document_data() {
     .doc(get_doc_id())
     .get()
     .then((doc) => {
-      doc.exists
-        ? renderDocument(doc.data())
-        : console.warn('Document not found');
+      doc.exists ? renderDocument(doc.data()) : window.location.replace(ROUTES.not_found);
     })
     .catch((error) => {
       console.error(error);
@@ -37,18 +36,19 @@ function load_document_data() {
     });
 }
 
-function saveDocData(scenario_contents) {
+function save_document(scenario_contents) {
   editMode
-    ? updateExistingDoc(scenario_contents)
-    : createNewDoc(scenario_contents);
+    ? update_document(scenario_contents)
+    : create_document(scenario_contents);
 }
 
-function updateExistingDoc(contents) {
+function update_document(contents) {
   contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .doc(get_doc_id())
     .set(contents)
     .then(function () {
+      toggle_confirm_on_exit(false);
       alert(MESSAGES.update_scenario_succes);
     })
     .catch(function (error) {
@@ -57,15 +57,16 @@ function updateExistingDoc(contents) {
     });
 }
 
-function createNewDoc(contents) {
+function create_document(contents) {
   contents.author = USER;
   contents.created_at = firebase.firestore.FieldValue.serverTimestamp();
   contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .add(contents)
     .then(function (docRef) {
+      toggle_confirm_on_exit(false);
       alert(MESSAGES.save_scenario_succes);
-      nextSteps(docRef, contents.caregivers);
+      next_steps(docRef);
     })
     .catch(function (error) {
       alert(save_scenario_error);
@@ -73,14 +74,9 @@ function createNewDoc(contents) {
     });
 }
 
-function nextSteps(docRef, caregiverList) {
-  const nextSteps = confirm(MESSAGES.save_scenario_next_steps);
-
-  if (nextSteps) {
-    sessionStorage.setItem(STORAGE.scenario_id, docRef.id);
-    sessionStorage.setItem(STORAGE.scenario_contents, caregiverList);
-    if (nextSteps) {
-      window.location = ROUTES.caregiver.editor;
-    }
+function next_steps(docRef) {
+  const choice = confirm(MESSAGES.save_scenario_next_steps);
+  if (choice) {
+    window.location = `${ROUTES.caregiver.editor}?scenario=${docRef.id}`;
   }
 }

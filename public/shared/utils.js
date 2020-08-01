@@ -23,3 +23,24 @@ const getParams = function (url) {
 function get_doc_id() {
   return getParams(window.location.href).title;
 }
+
+/**
+ * Get URL property "scneario" 
+ * Used only when opening caregivers in view mode
+ */
+function get_doc_id_second_param() {
+  return getParams(window.location.href).scenario;
+}
+
+const confirm_on_exit = e => {
+  e.preventDefault();
+  e.returnValue = '';
+}
+
+function toggle_confirm_on_exit(flag) {
+  if (flag) {
+    window.addEventListener('beforeunload', confirm_on_exit);
+  } else {
+    window.removeEventListener('beforeunload', confirm_on_exit);
+  }
+}

@@ -12,8 +12,6 @@ const FIRE = {
   caregivers: 'caregivers',
 };
 const STORAGE = {
-  scenario_id: 'scenarioId',
-  scenario_contents: 'scenarioContents',
   user_name: 'user_name',
 };
 const ROUTES = {
@@ -24,23 +22,12 @@ const ROUTES = {
   scenario: {
     viewer: '/viewer',
     editor: '/editor',
-    dynamic_viewer: (id) => {
-      return `/viewer?title=${id}`;
-    },
-    dynamic_editor: (id) => {
-      return `/editor?title=${id}`;
-    },
   },
   caregiver: {
     viewer: '/caregiver/viewer',
     editor: '/caregiver/editor',
-    dynamic_viewer: (id) => {
-      return `/caregiver/viewer?title=${id}`;
-    },
-    dynamic_editor: (id) => {
-      return `/caregiver/editor?title=${id}`;
-    },
   },
+  not_found: '/404.html',
 };
 const MESSAGES = {
   save_scenario_succes: 'Novo cenário criado com sucesso!',
@@ -56,6 +43,9 @@ const MESSAGES = {
   general_error: 'Ocorreu um erro',
   reading_error:
     'Ocorreu um erro a ler o documento, certifique que o URL está correcto.',
+  logout_sucess: 'Logout com sucesso',
+  image_upload_error: 'Ocorreu um erro com o upload da imagem',
+  lack_of_permissions: 'Lamento, mas não tem permissões para ver esta página',
 };
 const USER = localStorage.getItem(STORAGE.user_name);
 

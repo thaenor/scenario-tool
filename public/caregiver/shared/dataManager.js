@@ -17,6 +17,10 @@ function populateCapabilities(cap) {
   }
 }
 
+function get_doc_title() {
+  return $('#scenario-title').text() || '';
+}
+
 function getDocumentData() {
   let title = $('#scenario-title').text() || '';
   let name = $('#scenario-persona-name').text() || '';

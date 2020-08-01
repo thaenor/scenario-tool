@@ -14,7 +14,7 @@ $('#logoutBtn').click((e) => {
     })
     .catch(function (error) {
       console.error(error);
-      alert('An error happened.');
+      alert(MESSAGES.general_error);
     });
 });
 
@@ -52,7 +52,7 @@ function getPassword() {
 }
 
 function goToMain() {
-  window.location.replace('/main');
+  window.location.replace(ROUTES.main);
 }
 
 function storeUserData(string_json_data) {

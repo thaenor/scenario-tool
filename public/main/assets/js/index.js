@@ -1,5 +1,6 @@
 const db = firebase.firestore();
 firebase.auth().languageCode = 'pt';
+let scene_collection = [];
 
 $(document).ready(function () {
   fillUsername(USER);
@@ -10,12 +11,12 @@ $(document).ready(function () {
       .auth()
       .signOut()
       .then(function () {
-        alert('Sign-out successful.');
+        alert(MESSAGES.logout_sucess);
         location.reload();
       })
       .catch(function (error) {
         console.error(error);
-        alert('An error happened.');
+        alert(MESSAGES.general_error);
       });
   });
 });
@@ -42,6 +43,7 @@ function getDocumentData() {
       }
       snapshot.docs.map((doc) => {
         let scene = doc.data();
+        scene_collection.push({ id: doc.id, ...scene });
         let contenthtml = createCard(
           doc.id,
           scene.title,
@@ -49,6 +51,9 @@ function getDocumentData() {
           scene.caregivers
         );
         $('#id-firebase-content').append(contenthtml);
+        if (typeof USER !== 'string' || USER === '') {
+          $('.hide-if-no-user').hide();
+        }
       });
     })
     .catch((error) => {
@@ -60,28 +65,16 @@ function getDocumentData() {
     });
 }
 
-function createCaregiverFor(id) {
-  window.sessionStorage.setItem(STORAGE.scenario_id, id);
-  window.location = ROUTES.caregiver.editor;
-}
-
-function edit_caregiver(parent_ref, care_ref) {
-  window.sessionStorage.setItem(STORAGE.scenario_id, parent_ref);
-  window.location = ROUTES.caregiver.dynamic_editor(care_ref);
-}
-
 function removeScenario(Ref) {
   db.collection('scenarios')
     .doc(Ref)
     .delete()
     .then(function () {
-      console.log('Document successfully deleted!');
-      //TODO: remove this dynamically to avoid unecessary load
-      location.reload();
+      $(`#${Ref}`).empty();
     })
     .catch(function (error) {
       console.error('Error removing document: ', error);
-      alert('there has been an error - please check the console');
+      alert(MESSAGES.general_error);
     });
 }
 
@@ -95,7 +88,7 @@ function remove_scenario_reference(scenario_ref, ref, title) {
         title,
       }),
     })
-    .then((suc) => console.log(suc))
+    .then(() => $(`#${ref}`).empty())
     .catch((e) => console.error(e));
 }
 
@@ -111,7 +104,7 @@ function removeCaregiver(scenario_ref, ref, name) {
     })
     .catch(function (error) {
       console.error('Error removing document: ', error);
-      alert('there has been an error - please check the console');
+      alert(MESSAGES.general_error);
     });
 }
 
@@ -126,7 +119,7 @@ function createCard(id, card_title, card_content, caregivers) {
   }
 
   return `
-        <div class="card shadow mb-4">
+        <div id="${id}" class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="text-primary font-weight-bold m-0">${card_title}</h6>
                 <div class="dropdown no-arrow">
@@ -136,9 +129,9 @@ function createCard(id, card_title, card_content, caregivers) {
                     <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
                         <p class="text-center dropdown-header">Opções:</p>
                         <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">Ver</a>
-                        <a class="dropdown-item" role="presentation" href="/editor?title=${id}">Editar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" role="presentation" onclick="removeScenario('${id}')" href="#">Remover</a>
+                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/editor?title=${id}">Editar</a>
+                        <div class="dropdown-divider hide-if-no-user"></div>
+                        <a class="dropdown-item text-danger hide-if-no-user" role="presentation" onclick="removeScenario('${id}')" href="#">Remover</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +140,7 @@ function createCard(id, card_title, card_content, caregivers) {
                     ${caregiverContent}
                     <li class="list-group-item">
                         <span></span>
-                        <a href="#" class="btn btn-success btn-circle ml-1" role="button" onclick="createCaregiverFor('${id}')">
+                        <a href="/caregiver/editor?scenario=${id}" class="btn btn-success btn-circle ml-1 hide-if-no-user" role="button">
                             <i class="fas fa-plus text-white"></i>
                         </a>
                     </li>
@@ -160,23 +153,23 @@ function createCard(id, card_title, card_content, caregivers) {
 
 function addCareGiverContent(parent, name, Ref) {
   return `
-  <li class="list-group-item">
+  <li id="${Ref}" class="list-group-item">
     <div class="row">
         <div class="col"><span>${name}</span></div>
         <div class="col d-xl-flex flex-row justify-content-xl-end">
-            <a href="/caregiver/viewer?title=${Ref}" class="btn btn-primary btn-icon-split" role="button">
+            <a href="/caregiver/viewer?title=${Ref}&scenario=${parent}" class="btn btn-primary btn-icon-split" role="button">
                 <span class="text-white-50 icon">
                     <i class="fas fa-eye"></i>
                 </span>
                 <span class="text-white text">Ver</span>
             </a>
-            <a href="#" onclick="edit_caregiver('${parent}','${Ref}')" class="btn btn-info btn-icon-split" role="button">
+            <a href="/caregiver/editor?title=${Ref}&scenario=${parent}" class="btn btn-info btn-icon-split hide-if-no-user" role="button">
                 <span class="text-white-50 icon">
                     <i class="fas fa-pencil-alt"></i>
                 </span>
                 <span class="text-white text">Editar</span>
             </a>
-            <a href="#" onclick="removeCaregiver('${parent}','${Ref}','${name}')" class="btn btn-danger btn-icon-split" role="button">
+            <a href="#" onclick="removeCaregiver('${parent}','${Ref}','${name}')" class="btn btn-danger btn-icon-split hide-if-no-user" role="button">
                 <span class="text-white-50 icon">
                     <i class="fas fa-trash"></i>
                 </span>

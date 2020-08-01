@@ -8,4 +8,27 @@ function populateProse(doc) {
   $('#evolution').html(doc.evolution);
 }
 
-$(document).ready(function () {});
+function load_document_data(scenario_id, caregiver_id) {
+  db = firebase.firestore();
+  db.collection(FIRE.scenarios)
+    .doc(scenario_id)
+    .collection(FIRE.caregivers)
+    .doc(caregiver_id)
+    .get()
+    .then((doc) => {
+      doc.exists
+        ? renderDocument(doc.data())
+        : localtion.replace('/404');
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(MESSAGES.general_error);
+    });
+}
+
+$(document).ready(function () {
+  let caregiver_id = get_doc_id();
+  let scenario_id = get_doc_id_second_param();
+
+  load_document_data(scenario_id, caregiver_id);
+});

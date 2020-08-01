@@ -6,8 +6,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     console.log('user is signed in');
   } else {
     // No user is signed in.
-    console.log('user is NOT signed in');
-    alert("you don't have permissions to view this page");
-    window.location.replace('/auth');
+    alert(MESSAGES.lack_of_permissions);
+    window.location.replace(ROUTES.auth);
   }
 });

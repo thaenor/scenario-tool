@@ -7,6 +7,7 @@ $(document).ready(function () {
   getDocumentData();
 
   $('#logout-btn').click(() => {
+    localStorage.removeItem(STORAGE.user_name);
     firebase
       .auth()
       .signOut()

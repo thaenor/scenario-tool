@@ -14,31 +14,27 @@
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid">
-                        <!-- <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                            </div>
-                        </form> -->
-                        <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="d-inline-flex flex-row flex-grow-0 justify-content-end align-items-baseline flex-wrap">
-                                    <span id="id-firebase-username" class="mr-2 text-gray-600 small"></span>
-                                    <a id="logout-btn" class="btn btn-light btn-sm" role="button" href="#" style="margin-right: 10px;">
-                                        Logout
-                                    </a>
-                                    <a id="login-btn" class="btn btn-light btn-sm" href="/auth" style="margin-right: 10px;">
-                                        Login
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                <nav class="navbar navbar-light navbar-expand-md" style="background-color: #0188a5;">
+                    <div class="container-fluid"><a class="navbar-brand" href="#" style="color: #f7f7f7;">ESEP</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse d-xl-flex justify-content-xl-end"
+                            id="navcol-1">
+                            <ul class="nav navbar-nav">
+                                <li role="presentation" class="nav-item"><a class="nav-link active" href="#" style="color: #f7f7f7;">Home  <i class="fa fa-home" style="font-size: 30px;"></i></a></li>
+                                <li role="presentation" class="nav-item"><a class="nav-link" href="#" style="color: #f7f7f7;">Sobre  <i class="fa fa-info-circle" style="font-size: 30px;"></i></a></li>
+                                <li role="presentation" class="nav-item"><a class="nav-link" href="#" style="color: #f7f7f7;">Ajuda  <i class="fa fa-question-circle" style="font-size: 30px;"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
+                <div style="float: right;">
+                    <span id="id-firebase-username" class="mr-2 text-gray-600 small"></span>
+                    <a id="logout-btn" class="btn btn-light btn-sm" role="button" href="#" style="margin-right: 10px;">
+                        Logout
+                    </a>
+                    <a id="login-btn" style="color: #f7f7f7;" class="btn btn-light btn-sm" href="/auth" style="margin-right: 10px;">
+                        Login
+                    </a>
+                </div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">

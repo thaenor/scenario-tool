@@ -80,7 +80,6 @@ function removeScenario(Ref) {
 }
 
 function remove_scenario_reference(scenario_ref, ref, title) {
-  console.log(`remove_scenario_reference(${scenario_ref}, ${ref}, ${title})`);
   db.collection(FIRE.scenarios)
     .doc(scenario_ref)
     .update({

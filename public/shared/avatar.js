@@ -11,6 +11,19 @@ $(document).ready(() => {
   });
 });
 
+function loading_status(progress) {
+  if (progress == 0) {
+    $('#image-avatar').after(
+      `<span id="update-status">upload ${progress}%...</span>`
+    );
+  }
+
+  if (progress >= 100) {
+    $('#update-status').empty();
+  }
+  $('#update-status').html(`<span id="update-status">upload ${progress}%...</span>`);
+}
+
 function setAvatar(url) {
   $('#image-avatar').attr('src', url);
 }

@@ -86,6 +86,7 @@ function create_document(contents) {
     .collection(FIRE.caregivers)
     .add(contents)
     .then((ref) => {
+      editMode = true;
       toggle_confirm_on_exit(false);
       add_to_scenario_caregivers(ref.id, contents.title);
     })

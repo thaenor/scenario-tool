@@ -64,6 +64,7 @@ function create_document(contents) {
   db.collection(FIRE.scenarios)
     .add(contents)
     .then(function (docRef) {
+      editMode = true;
       toggle_confirm_on_exit(false);
       alert(MESSAGES.save_scenario_succes);
       next_steps(docRef);

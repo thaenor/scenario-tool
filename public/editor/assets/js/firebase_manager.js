@@ -46,7 +46,7 @@ function update_document(contents) {
   contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .doc(get_doc_id())
-    .set(contents)
+    .update(contents)
     .then(function () {
       toggle_confirm_on_exit(false);
       alert(MESSAGES.update_scenario_succes);

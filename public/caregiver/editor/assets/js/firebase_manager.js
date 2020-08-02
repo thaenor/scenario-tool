@@ -66,7 +66,7 @@ function update_document(contents) {
     .doc(scenario_id)
     .collection(FIRE.caregivers)
     .doc(get_doc_id())
-    .set(contents)
+    .update(contents)
     .then(() => {
       toggle_confirm_on_exit(false);
       add_to_scenario_caregivers(get_doc_id(), contents.title);

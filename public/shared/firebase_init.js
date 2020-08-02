@@ -51,6 +51,9 @@ const USER = localStorage.getItem(STORAGE.user_name);
 
 firebase.initializeApp(firebaseConfig);
 
+// Initialize Performance Monitoring and get a reference to the service
+const perf = firebase.performance();
+
 firebase
   .firestore()
   .enablePersistence()

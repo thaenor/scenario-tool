@@ -14,7 +14,6 @@ function firestore_upload(image, update_callback) {
       // Observe state change events such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      update_callback(progress);
       console.log('Upload is ' + progress + '% done');
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -22,7 +21,10 @@ function firestore_upload(image, update_callback) {
           break;
         case firebase.storage.TaskState.RUNNING: // or 'running'
           console.log('Upload is running');
+          update_callback(progress);
           break;
+        case firebase.storage.TaskState.SUCCESS:
+          update_callback(100);
       }
     },
     (error) => {

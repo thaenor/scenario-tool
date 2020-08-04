@@ -1,12 +1,13 @@
 let db;
 let editMode = false;
-let scenario_id;
+let scenario_id, document_id;
 
 $(document).ready(function () {
   toggle_confirm_on_exit(true);
   db = firebase.firestore();
   validate_scenario_id();
-  editMode = get_doc_id() ? true : false;
+  document_id = get_doc_id();
+  editMode = document_id ? true : false;
   editMode && load_document_data();
 
   $('#save-button').click((e) => {
@@ -37,7 +38,7 @@ function load_document_data() {
   db.collection(FIRE.scenarios)
     .doc(scenario_id)
     .collection(FIRE.caregivers)
-    .doc(get_doc_id())
+    .doc(document_id)
     .get()
     .then((doc) => {
       if (doc.exists) {
@@ -65,11 +66,11 @@ function update_document(contents) {
   db.collection(FIRE.scenarios)
     .doc(scenario_id)
     .collection(FIRE.caregivers)
-    .doc(get_doc_id())
+    .doc(document_id)
     .update(contents)
     .then(() => {
       toggle_confirm_on_exit(false);
-      add_to_scenario_caregivers(get_doc_id(), contents.title);
+      add_to_scenario_caregivers(document_id, contents.title);
     })
     .catch(function (error) {
       alert(MESSAGES.save_caregiver_error);
@@ -87,6 +88,7 @@ function create_document(contents) {
     .add(contents)
     .then((ref) => {
       editMode = true;
+      document_id = ref.id;
       toggle_confirm_on_exit(false);
       add_to_scenario_caregivers(ref.id, contents.title);
     })
@@ -108,7 +110,7 @@ function add_to_scenario_caregivers(ref, title) {
 }
 
 function remove_caregiver_in_scenario() {
-  const entryToRemove = { title: get_doc_title(), ref: get_doc_id() };
+  const entryToRemove = { title: get_doc_title(), ref: document_id };
   db.collection(FIRE.scenarios)
     .doc(scenario_id)
     .update({

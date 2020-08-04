@@ -1,10 +1,12 @@
 let db;
 let editMode = false;
+let document_id;
 
 $(document).ready(function () {
   toggle_confirm_on_exit(true);
   db = firebase.firestore();
-  editMode = get_doc_id() ? true : false;
+  document_id = get_doc_id();
+  editMode = document_id ? true : false;
   editMode && load_document_data();
 
   $('#save-button').click((e) => {
@@ -25,7 +27,7 @@ $(document).ready(function () {
 
 function load_document_data() {
   db.collection(FIRE.scenarios)
-    .doc(get_doc_id())
+    .doc(document_id)
     .get()
     .then((doc) => {
       doc.exists ? renderDocument(doc.data()) : window.location.replace(ROUTES.not_found);
@@ -45,7 +47,7 @@ function save_document(scenario_contents) {
 function update_document(contents) {
   contents.updated_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
-    .doc(get_doc_id())
+    .doc(document_id)
     .update(contents)
     .then(function () {
       toggle_confirm_on_exit(false);
@@ -65,6 +67,7 @@ function create_document(contents) {
     .add(contents)
     .then(function (docRef) {
       editMode = true;
+      document_id = docRef.id;
       toggle_confirm_on_exit(false);
       alert(MESSAGES.save_scenario_succes);
       next_steps(docRef);

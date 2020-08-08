@@ -4,19 +4,7 @@ let errorMessageLabel = document.getElementById('login-error-message');
 let signInGoogleBtn = document.getElementById('signInGoogleBtn');
 let emailFormField = document.getElementById('login-form-email');
 let passwordFormField = document.getElementById('login-form-password');
-
-$('#logoutBtn').click((e) => {
-  firebase
-    .auth()
-    .signOut()
-    .then(function () {
-      console.log('Sign-out successful.');
-    })
-    .catch(function (error) {
-      console.error(error);
-      alert(MESSAGES.general_error);
-    });
-});
+let resetPassword = document.getElementById('reset-password');
 
 // Initialize Firebase
 //firebase.initializeApp(firebaseConfig);
@@ -41,14 +29,18 @@ signInGoogleBtn.addEventListener('click', (e) => {
   clearErrorMessage();
   loginWithGoogle();
 });
+resetPassword.addEventListener('click', (e) => {
+  e.preventDefault();
+  resetUserPassword(getEmail());
+});
 
 // Helper functions
 function getEmail() {
-  return passwordFormField.value;
+  return emailFormField.value;
 }
 
 function getPassword() {
-  return emailFormField.value;
+  return passwordFormField.value;
 }
 
 function goToMain() {
@@ -57,7 +49,7 @@ function goToMain() {
 
 function storeUserData(string_json_data) {
   localStorage.clear();
-  localStorage.setItem('user_data', string_json_data);
+  localStorage.setItem(STORAGE.user_name, string_json_data);
 }
 
 function displayErrorMessage(message) {
@@ -78,13 +70,14 @@ function createNewUser(email, password) {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then((success) => {
-      storeUserData(JSON.stringify(success.user));
+    .then(() => {
+      storeUserData(JSON.stringify(getEmail()));
       clearForm();
       goToMain();
     })
     .catch(function (error) {
       displayErrorMessage(error.message);
+      console.error(error);
       clearForm();
     });
 }
@@ -93,8 +86,8 @@ function loginExistingUser(email, password) {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then((success) => {
-      storeUserData(JSON.stringify(success.user));
+    .then(() => {
+      storeUserData(getEmail());
       goToMain();
     })
     .catch(function (error) {
@@ -126,4 +119,20 @@ function loginWithGoogle() {
       displayErrorMessage(error.message);
       clearForm();
     });
+}
+
+function resetUserPassword(emailAddress) {
+  if (emailAddress.length === 0) {
+    alert(MESSAGES.email_reset_fill_email);
+  } else {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(emailAddress)
+      .then(function () {
+        alert(MESSAGES.password_reset_sent);
+      })
+      .catch(function (error) {
+        alert(`${MESSAGES.general_error} - ${error.message}`);
+      });
+  }
 }

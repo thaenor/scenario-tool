@@ -46,6 +46,8 @@ const MESSAGES = {
   logout_sucess: 'Logout com sucesso',
   image_upload_error: 'Ocorreu um erro com o upload da imagem',
   lack_of_permissions: 'Lamento, mas não tem permissões para ver esta página',
+  email_reset_fill_email: 'Por favor preencha o email',
+  password_reset_sent: 'Foi enviado um email para redefinir a palavra passe',
 };
 const USER = localStorage.getItem(STORAGE.user_name);
 

@@ -30,11 +30,13 @@ function load_document_data() {
     .doc(document_id)
     .get()
     .then((doc) => {
-      doc.exists ? renderDocument(doc.data()) : window.location.replace(ROUTES.not_found);
+      doc.exists
+        ? renderDocument(doc.data())
+        : window.location.replace(ROUTES.not_found);
     })
     .catch((error) => {
       console.error(error);
-      alert(MESSAGES.general_error);
+      alert(`${MESSAGES.general_error} - ${error.message}`);
     });
 }
 
@@ -54,7 +56,7 @@ function update_document(contents) {
       alert(MESSAGES.update_scenario_succes);
     })
     .catch(function (error) {
-      alert(MESSAGES.save_scenario_error);
+      alert(`${MESSAGES.save_scenario_error} - ${error.message}`);
       console.error('Error writing document: ', error);
     });
 }
@@ -73,7 +75,7 @@ function create_document(contents) {
       next_steps(docRef);
     })
     .catch(function (error) {
-      alert(save_scenario_error);
+      alert(`${MESSAGES.save_scenario_error} - ${error.message}`);
       console.error('Error adding document: ', error);
     });
 }

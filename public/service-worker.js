@@ -5,7 +5,7 @@ importScripts(
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
   workbox.setConfig({
-    debug: true,
+    debug: false,
   });
   workbox.loadModule('workbox-strategies');
   workbox.routing.registerRoute(

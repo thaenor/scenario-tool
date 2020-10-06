@@ -67,7 +67,9 @@ function getDocumentData() {
 }
 
 function removeScenario(Ref) {
-  db.collection('scenarios')
+  let flag = confirm('Deseja remover este cenário?');
+  if(flag) {
+    db.collection('scenarios')
     .doc(Ref)
     .delete()
     .then(function () {
@@ -77,10 +79,13 @@ function removeScenario(Ref) {
       console.error('Error removing document: ', error);
       alert(MESSAGES.general_error);
     });
+  }
 }
 
 function remove_scenario_reference(scenario_ref, ref, title) {
-  db.collection(FIRE.scenarios)
+  let flag = confirm('Deseja remover este cenário?');
+  if(flag) {
+    db.collection(FIRE.scenarios)
     .doc(scenario_ref)
     .update({
       caregivers: firebase.firestore.FieldValue.arrayRemove({
@@ -90,6 +95,7 @@ function remove_scenario_reference(scenario_ref, ref, title) {
     })
     .then(() => $(`#${ref}`).empty())
     .catch((e) => console.error(e));
+  }
 }
 
 function removeCaregiver(scenario_ref, ref, name) {

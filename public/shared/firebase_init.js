@@ -56,17 +56,17 @@ firebase.initializeApp(firebaseConfig);
 // Initialize Performance Monitoring and get a reference to the service
 const perf = firebase.performance();
 
-firebase
-  .firestore()
-  .enablePersistence()
-  .catch(function (err) {
-    console.warn(err);
-    alert(err.message);
-  });
+// firebase
+//   .firestore()
+//   .enablePersistence()
+//   .catch(function (err) {
+//     console.warn(err);
+//     alert(err.message);
+//   });
 
-if ('serviceWorker' in navigator) {
-  // Use the window load event to keep the page load performant
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js');
-  });
-}
+// if ('serviceWorker' in navigator) {
+//   // Use the window load event to keep the page load performant
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('/service-worker.js');
+//   });
+// }

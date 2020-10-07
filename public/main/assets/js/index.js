@@ -48,12 +48,12 @@ function getDocumentData() {
         let contenthtml = createCard(
           doc.id,
           scene.title,
-          scene.prose.summary,
+          scene.prose.summary.substring(0, 150).concat( '...'),
           scene.caregivers
         );
         $('#id-firebase-content').append(contenthtml);
         if (typeof USER !== 'string' || USER === '') {
-          $('.hide-if-no-user').hide();
+          $('.hide-if-no-user').remove();
         }
       });
     })
@@ -128,28 +128,47 @@ function createCard(id, card_title, card_content, caregivers) {
         <div id="${id}" class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="text-primary font-weight-bold m-0">${card_title}</h6>
+                <a href="/caregiver/editor?scenario=${id}" class="btn btn-primary btn-circle ml-1 hide-if-no-user" role="button">
+                    <i class="fas fa-plus text-white"></i>
+                </a>
+                <a href="/viewer?title=${id}" class="btn btn-primary btn-circle ml-1" role="button">
+                    <i class="fas fa-eye text-white"></i>
+                </a>
+                <a href="/editor?title=${id}" class="btn btn-primary btn-circle ml-1 hide-if-no-user" role="button">
+                    <i class="fas fa-pencil-alt text-white"></i>
+                </a>
+                <a onclick="removeScenario('${id}')" href="#" class="btn btn-danger btn-circle ml-1 hide-if-no-user" role="button">
+                    <i class="fas fa-trash text-white"></i>
+                </a>
                 <div class="dropdown no-arrow">
                     <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
                         <i class="fas fa-ellipsis-v text-gray-400"></i>
                     </button>
                     <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
                         <p class="text-center dropdown-header">Opções:</p>
-                        <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">Ver</a>
-                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/editor?title=${id}">Editar</a>
+                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/caregiver/editor?scenario=${id}">
+                          <i class="fas fa-plus"></i>
+                          Adicionar cuidador
+                        </a>
+                        <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">
+                          <i class="fas fa-eye"></i>
+                          Ver
+                        </a>
+                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/editor?title=${id}">
+                          <i class="fas fa-pencil-alt"></i>
+                          Editar
+                        </a>
                         <div class="dropdown-divider hide-if-no-user"></div>
-                        <a class="dropdown-item text-danger hide-if-no-user" role="presentation" onclick="removeScenario('${id}')" href="#">Remover</a>
+                        <a class="dropdown-item text-danger hide-if-no-user" role="presentation" onclick="removeScenario('${id}')" href="#">
+                          <i class="fas fa-trash"></i>
+                          Remover
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <ul class="list-group">
                     ${caregiverContent}
-                    <li class="list-group-item">
-                        <span></span>
-                        <a href="/caregiver/editor?scenario=${id}" class="btn btn-success btn-circle ml-1 hide-if-no-user" role="button">
-                            <i class="fas fa-plus text-white"></i>
-                        </a>
-                    </li>
                 </ul>
                 <p class="m-0">${card_content}</p>
             </div>
@@ -160,28 +179,29 @@ function createCard(id, card_title, card_content, caregivers) {
 function addCareGiverContent(parent, name, Ref) {
   return `
   <li id="${Ref}" class="list-group-item">
-    <div class="row">
-        <div class="col"><span>${name}</span></div>
-        <div class="col d-xl-flex flex-row justify-content-xl-end">
-            <a href="/caregiver/viewer?title=${Ref}&scenario=${parent}" class="btn btn-primary btn-icon-split" role="button">
-                <span class="text-white-50 icon">
-                    <i class="fas fa-eye"></i>
-                </span>
-                <span class="text-white text">Ver</span>
-            </a>
-            <a href="/caregiver/editor?title=${Ref}&scenario=${parent}" class="btn btn-info btn-icon-split hide-if-no-user" role="button">
-                <span class="text-white-50 icon">
-                    <i class="fas fa-pencil-alt"></i>
-                </span>
-                <span class="text-white text">Editar</span>
-            </a>
-            <a href="#" onclick="removeCaregiver('${parent}','${Ref}','${name}')" class="btn btn-danger btn-icon-split hide-if-no-user" role="button">
-                <span class="text-white-50 icon">
-                    <i class="fas fa-trash"></i>
-                </span>
-                <span class="text-white text">Remover</span>
-            </a>
-        </div>
+    <div class="row" data-toggle="collapse" data-target="#collapseExample-${Ref}" aria-expanded="false" aria-controls="collapseExample-${Ref}">
+        <div class="col"><span>${name} - (clique para ver opções)</span></div>
+        <i class="fas fa-sort-down"></i>
+     </div>
+     <div class="collapse" id="collapseExample-${Ref}">
+     <a href="/caregiver/viewer?title=${Ref}&scenario=${parent}" class="btn btn-primary btn-icon-split" role="button">
+         <span class="text-white-50 icon">
+             <i class="fas fa-eye"></i>
+         </span>
+         <span class="text-white text">Ver</span>
+     </a>
+     <a href="/caregiver/editor?title=${Ref}&scenario=${parent}" class="btn btn-info btn-icon-split hide-if-no-user" role="button">
+         <span class="text-white-50 icon">
+             <i class="fas fa-pencil-alt"></i>
+         </span>
+         <span class="text-white text">Editar</span>
+     </a>
+     <a href="#" onclick="removeCaregiver('${parent}','${Ref}','${name}')" class="btn btn-danger btn-icon-split hide-if-no-user" role="button">
+         <span class="text-white-50 icon">
+             <i class="fas fa-trash"></i>
+         </span>
+         <span class="text-white text">Remover</span>
+     </a>
      </div>
     </li>
     `;

@@ -1,110 +1,221 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ESEP - Ferramenta Role-play de cenários</title>
-    <link rel="icon" type="image/x-icon" href="../shared/favicon.ico"/>
-    <meta name="description" content="Scenario creation tool for ESEP nursing school.">
-    <meta property="og:type" content="website">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/minty/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Dark-NavBar.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="../shared/Footer-Basic.css"/>
-</head>
-
-<body style="margin-bottom: 50px;">
-    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height: 80px;background-color: #0188A5;color: #ffffff;">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="fa fa-globe"></i>&nbsp;ESEP</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+        <title>ESEP - Ferramenta Role-play de cenários</title>
+        <link rel="icon" type="image/x-icon" href="../shared/favicon.ico"/>
+        <meta name="description" content="Scenario creation tool for ESEP nursing school."/>
+        <meta property="og:type" content="website"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/minty/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="assets/css/Dark-NavBar.css"/>
+        <link rel="stylesheet" href="assets/css/Footer-Clean.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+        <link rel="stylesheet" href="assets/css/Steps-Progressbar.css"/>
+        <link rel="stylesheet" href="assets/css/styles.css"/>
+        <link rel="stylesheet" href="../shared/Footer-Basic.css"/>
+    </head>
+    <body style="margin-bottom: 50px;">
+        <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height: 80px;background-color: #0188A5;color: #ffffff;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fa fa-globe"></i>&nbsp;ESEP
+                
+                
+                </a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
                 class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-wpexplorer"></i>&nbsp;Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-star-o"></i>&nbsp;Ajuda</a></li>
-                    <li class="nav-item"><a class="nav-link active" style="color:#ffffff;" href="#"><i class="fa fa-sign-in"></i>&nbsp;Sign In</a></li>
-                </ul>
-        </div>
-        </div>
-    </nav>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3" style="margin-top: 20px;">
-                    <section class="sidebar">
-                        <h1 class="text-info">Ajuda</h1>
-                        <div>
-                            <div class="text-center sidebar-menu"><a data-bs-hover-animate="flash" href="#introduction">Introdução</a></div>
-                            <div class="text-center sidebar-menu"><a data-bs-hover-animate="flash" href="#main-page">Pagina Principal</a></div>
-                            <div class="text-center sidebar-menu"><a data-bs-hover-animate="flash" href="#scenario">Cenários</a></div>
-                            <div class="text-center sidebar-menu"><a data-bs-hover-animate="flash" href="#share">Partilhar cenário</a></div>
-                        </div>
-                    </section>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:#ffffff;" href="#">
+                                <i class="fa fa-home"></i>&nbsp;Home
+                            
+                            
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:#ffffff;" href="#">
+                                <i class="fa fa-wpexplorer"></i>&nbsp;Sobre
+                            
+                            
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:#ffffff;" href="#">
+                                <i class="fa fa-star-o"></i>&nbsp;Ajuda
+                            
+                            
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:#ffffff;" href="#">
+                                <i class="fa fa-sign-in"></i>&nbsp;Sign In
+                            
+                            
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col">
-                    <section style="margin-top: 20px;">
-                        <section>
-                            <h2 class="text-body" id="introduction">Introdução</h2>
-                            <p class="lead text-justify text-body">Esta ferramenta foi desenvolvida no contexto da unidade curricular “Pessoa dependente e os familiares cuidadores” do CLE(Curso Licenciatura Enfermagem) da ESEP(Escola Superior Enfermagem do Porto). Tem como objetivo adotar
-                                uma nova forma de criar, partilhar e visualizar cenários. Esta página serve de guia para ajudar a utilizar a ferramenta. Apenas os professores da ESEP terão acesso e permissões para manipular cenários. Os alunos poderão
-                                consultar os cenários existentes.<br><br>A ferramenta pode ser acedida através de qualquer dispositivo: “smartphone”, computador, portátil ou “tablet”.<br></p>
+            </div>
+        </nav>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" style="margin-top: 20px;">
+                        <section class="sidebar">
+                            <h1 class="text-info">Ajuda</h1>
+                            <div>
+                                <div class="text-center sidebar-menu">
+                                    <a data-bs-hover-animate="flash" href="#introduction">Introdução</a>
+                                </div>
+                                <div class="text-center sidebar-menu">
+                                    <a data-bs-hover-animate="flash" href="#main-page">Pagina Principal</a>
+                                </div>
+                                <div class="text-center sidebar-menu">
+                                    <a data-bs-hover-animate="flash" href="#scenario">Cenários</a>
+                                </div>
+                                <div class="text-center sidebar-menu">
+                                    <a data-bs-hover-animate="flash" href="#share">Partilhar cenário</a>
+                                </div>
+                            </div>
                         </section>
-                        <section>
-                            <h2 class="text-body" id="main-page" style="margin-top: 20px;">Pagina Principal</h2>
-                            <div>
-                                <p class="lead text-justify text-body d-flex">Na página principal, poderá ver uma listagem de todos os cenários criados na ferramenta. As imagens seguintes representam os comandos disponíveis para professores relativos à manipulação de cenários dos dois tipos.</p>
-                                <img
-                                    class="img-fluid shadow-sm img-centre" src="assets/img/card_info_details.png" loading="lazy"></div><img class="img-fluid shadow-sm img-centre" src="assets/img/card_info.png" loading="lazy"></section>
-                        <section>
-                            <h2 class="text-body" id="scenario" style="margin-top: 20px;">Cenários</h2>
-                            <p class="lead text-body">Para criar um cenário deve utilizar o botão “criar cenário” no topo a página principal. Pode também utilizar&nbsp;<a href="/editor">esta ligação.</a></p><img class="img-fluid shadow-sm d-block img-centre" src="assets/img/create_scenario.png"
-                                loading="lazy">
-                            <p class="lead text-justify text-body">Na página de edição de cenário pode preencher cada uma das áreas de texto, ícones de estado ou mesmo as barras de seleção para indicar o estado do paciente. Pode também fazer o “upload” de uma imagem à sua escolha, que gostaria
-                                de ver associada. Nenhum dos campos é obrigatório, no entanto, aconselha-se o preenchimento do título e “resumo” de um cenário, para que o mesmo seja facilmente reconhecido na listagem principal.<br></p>
-                            <p class="lead text-justify text-body">Para gravar um cenário, utilize o botão no canto superior direito. Caso se trate de uma nova adição, uma caixa de dialogo irá propor a criação de um cenário cuidador, associado ao paciente que acabou de criar. Pode também fazer
-                                o mesmo através da <a href="/">página principal</a>.<br></p><img class="img-fluid shadow-sm img-centre" src="assets/img/save_button.png" loading="lazy">
-                            <p class="lead text-justify text-body">É possível associar um cuidador a um cenário já existente através do símbolo mais “+” na página de listagem. O processo é muito semelhante ao anteriormente referido.<br></p><img class="img-fluid shadow-sm img-centre" src="assets/img/associate_caregiver.png"
-                                loading="lazy"></section>
-                        <section>
-                            <h2 class="text-body" id="share" style="margin-top: 20px;">Partilhar cenário</h2>
-                            <div>
-                                <p class="lead text-justify text-body d-flex">Para partilhar um cenário basta partilhar o URL, ou seja, a ligação do mesmo. Basta abrir um cenário já criado e copiar o texto na barra de endereços do seu navegador, no topo do ecrã, como mostra a imagem seguinte. A partilha
-                                    de cenários funciona através de um código identificador que é anexado no endereço da página.<br></p>
-                            </div><img class="img-fluid shadow-sm img-centre" src="assets/img/scenario_code.png" loading="lazy"><img class="img-fluid shadow-sm img-centre" src="assets/img/caregiver_code.png" loading="lazy" style="margin-top: 20px;margin-bottom: 20px;"></section>
-                    </section>
+                    </div>
+                    <div class="col">
+                        <section style="margin-top: 20px;">
+                            <section>
+                                <h2 class="text-body" id="introduction">Introdução</h2>
+                                <p class="text-justify text-body">
+                                Esta ferramenta foi desenvolvida no contexto da unidade curricular “Pessoa Dependente e os Familiares Cuidadores” 
+                                do Curso Licenciatura Enfermagem da ESEP.
+                                
+                                    
+                                    
+                                    <br/>
+                                    <br/>
+                                A ferramenta permite uma nova forma de criar, partilhar e visualizar cenários. 
+                                Esta página serve de guia para ajudar a utilizar a ferramenta. 
+                                Apenas os professores da ESEP têm permissão para criar e alterar os cenários. 
+                                Os alunos podem consultar os cenários existentes.
+                                
+                                    
+                                    
+                                    <br/>
+                                A ferramenta pode ser acedida através de qualquer dispositivo: “smartphone”, computador, portátil ou “tablet”.
+                                
+                                    
+                                    
+                                    <br/>
+                                </p>
+                            </section>
+                            <section>
+                                <h2 class="text-body" id="main-page" style="margin-top: 20px;">Pagina Principal</h2>
+                                <div>
+                                    <p class="text-justify text-body d-flex">
+                                    Na página principal, poderá ver uma listagem de todos os cenários existentes. 
+                                    As imagens seguintes representam os comandos disponíveis para os professores 
+                                    relativos à manipulação de cenários com dados relativos aos doentes e seus cuidadores.
+                                </p>
+                                    <img
+                                    class="img-fluid shadow-sm img-centre" src="assets/img/card_info_details.png" loading="lazy"/>
+                                </div>
+                                <img class="img-fluid shadow-sm img-centre" src="assets/img/card_info.png" loading="lazy"/>
+                            </section>
+                            <section>
+                                <h2 class="text-body" id="scenario" style="margin-top: 20px;">Cenários</h2>
+                                <p class="text-justify text-body">
+                                    Para criar um cenário deve utilizar o botão <em>criar cenário</em> no topo da página principal. 
+                                    Pode também utilizar a seguinte ligação, 
+                                    
+                                    
+                                    <a href="/editor">"Criar cenário".</a>
+                                </p>
+                                <img class="img-fluid shadow-sm d-block img-centre" src="assets/img/create_scenario.png"
+                                loading="lazy"/>
+                                <p class="text-justify text-body">
+                                    Na página de edição de cenário pode preencher cada uma das áreas de texto, 
+                                    ícones de estado ou mesmo as barras de seleção para indicar o estado do doente. 
+                                    Pode fazer o upload de uma imagem que permita uma melhor visualização e 
+                                    compreensão do caso.  Nenhum dos campos é obrigatório, no entanto, 
+                                    aconselha-se o preenchimento do título e resumo de um cenário, 
+                                    para que o mesmo seja facilmente reconhecido na listagem principal.
+                                        
+                                        
+                                    <br/>
+                                </p>
+                                <p class="text-justify text-body">
+                                    Para gravar um cenário, utilize o botão no canto superior direito. 
+                                    Caso se trate de uma nova adição, uma caixa de dialogo irá propor 
+                                    a criação de um cuidador, associado ao paciente que acabou de criar. 
+                                    Pode também fazer o mesmo através da
+        
+                                    <a href="/">página principal</a>.
+                                            
+                                        
+                                    <br/>
+                                </p>
+                                <img class="img-fluid shadow-sm img-centre" src="assets/img/save_button.png" loading="lazy"/>
+                                <p class="text-justify text-body">
+                                    É possível associar um cuidador a um cenário já existente
+                                    através do símbolo mais + na página de listagem. 
+                                    O processo é muito semelhante ao anteriormente referido.
+                                                
+                                        
+                                    <br/>
+                                </p>
+                                <img class="img-fluid shadow-sm img-centre" src="assets/img/associate_caregiver.png"
+                                loading="lazy"/>
+                            </section>
+                            <section>
+                                <h2 class="text-body" id="share" style="margin-top: 20px;">Partilhar cenário</h2>
+                                <div>
+                                    <p class="text-justify text-body d-flex">
+                                        Para partilhar um cenário basta partilhar o URL, 
+                                        ou seja, a ligação do mesmo. Basta abrir um cenário 
+                                        já criado e copiar o texto na barra de endereços do seu navegador, 
+                                        no topo do ecrã, como mostra a imagem seguinte. 
+                                        A partilha de cenários funciona através de um código identificador
+                                        que é anexado no endereço da página.
+                                                        
+                                            
+                                        <br/>
+                                    </p>
+                                </div>
+                                <img class="img-fluid shadow-sm img-centre" src="assets/img/scenario_code.png" loading="lazy"/>
+                                <img class="img-fluid shadow-sm img-centre" src="assets/img/caregiver_code.png" loading="lazy" style="margin-top: 20px;margin-bottom: 20px;"/>
+                            </section>
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="footer-basic" style="background: rgb(42,136,165); margin-top:20px">
-        <footer>
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="/">Home</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="/about">Sobre</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="/help">Ajuda</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="/auth">Registo</a>
-                </li>
-            </ul>
-            <p class="copyright">ESEP © 2020</p>
-        </footer>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-</body>
-
+        <div class="footer-basic" style="background: rgb(42,136,165); margin-top:20px">
+            <footer>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="/about">Sobre</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="/help">Ajuda</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="/auth">Registo</a>
+                    </li>
+                </ul>
+                <p class="copyright">ESEP © 2020</p>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+    </body>
 </html>

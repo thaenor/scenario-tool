@@ -20,7 +20,14 @@ $(document).ready(function () {
         alert(MESSAGES.general_error);
       });
   });
+  setTimeout(() => {
+    init_tooltips();
+  }, 1000);
 });
+
+function init_tooltips() {
+  $('[data-toggle="tooltip"]').tooltip()
+}
 
 function fillUsername(name) {
   if (typeof name !== 'string' || name === '') {
@@ -126,52 +133,67 @@ function createCard(id, card_title, card_content, caregivers) {
 
   return `
         <div id="${id}" class="card shadow mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
+           <div class="card-header d-flex">
+              <div class="mr-auto p-2" style="margin-top:10px">
                 <h6 class="text-primary font-weight-bold m-0">${card_title}</h6>
-                <a href="/caregiver/editor?scenario=${id}" class="btn btn-primary btn-circle ml-1 hide-if-no-user" role="button">
-                    <i class="fas fa-plus text-white"></i>
+              </div>
+              <div class="p-2">
+                <a href="/caregiver/editor?scenario=${id}" 
+                  class="btn btn-primary btn-circle ml-1 hide-if-no-user" 
+                  data-toggle="tooltip" data-placement="top" title="Adicionar cuidador">
+                  <i class="fas fa-plus text-white"></i>
                 </a>
-                <a href="/viewer?title=${id}" class="btn btn-primary btn-circle ml-1" role="button">
-                    <i class="fas fa-eye text-white"></i>
+                <a href="/viewer?title=${id}" 
+                   class="btn btn-primary btn-circle ml-1" 
+                   data-toggle="tooltip" data-placement="top" title="Ver cenário">
+                  <i class="fas fa-eye text-white"></i>
                 </a>
-                <a href="/editor?title=${id}" class="btn btn-primary btn-circle ml-1 hide-if-no-user" role="button">
-                    <i class="fas fa-pencil-alt text-white"></i>
+                <a href="/editor?title=${id}" 
+                   class="btn btn-primary btn-circle ml-1 hide-if-no-user" 
+                   data-toggle="tooltip" data-placement="top" title="Alterar cenário">
+                  <i class="fas fa-pencil-alt text-white"></i>
                 </a>
-                <a onclick="removeScenario('${id}')" href="#" class="btn btn-danger btn-circle ml-1 hide-if-no-user" role="button">
-                    <i class="fas fa-trash text-white"></i>
+                <a onclick="removeScenario('${id}')" href="#" 
+                   class="btn btn-danger btn-circle ml-1 hide-if-no-user" 
+                   role="button"
+                   data-toggle="tooltip" data-placement="top" title="Remover cenário">
+                  <i class="fas fa-trash text-white"></i>
                 </a>
+              </div>
+              <div class="p-2">
                 <div class="dropdown no-arrow">
-                    <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
-                        <i class="fas fa-ellipsis-v text-gray-400"></i>
-                    </button>
-                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
-                        <p class="text-center dropdown-header">Opções:</p>
-                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/caregiver/editor?scenario=${id}">
-                          <i class="fas fa-plus"></i>
-                          Adicionar cuidador
-                        </a>
-                        <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">
-                          <i class="fas fa-eye"></i>
-                          Ver
-                        </a>
-                        <a class="dropdown-item hide-if-no-user" role="presentation" href="/editor?title=${id}">
-                          <i class="fas fa-pencil-alt"></i>
-                          Editar
-                        </a>
-                        <div class="dropdown-divider hide-if-no-user"></div>
-                        <a class="dropdown-item text-danger hide-if-no-user" role="presentation" onclick="removeScenario('${id}')" href="#">
-                          <i class="fas fa-trash"></i>
-                          Remover
-                        </a>
+                  <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
+                    <i class="fas fa-ellipsis-v text-gray-400"></i>
+                  </button>
+                  <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
+                    <p class="text-center dropdown-header">Opções:</p>
+                    <a class="dropdown-item hide-if-no-user" role="presentation" href="/caregiver/editor?scenario=${id}">
+                      <i class="fas fa-plus"></i>
+                      Adicionar cuidador
+                    </a>
+                    <a class="dropdown-item" role="presentation" href="/viewer?title=${id}">
+                      <i class="fas fa-eye"></i>
+                      Ver
+                    </a>
+                    <a class="dropdown-item hide-if-no-user" role="presentation" href="/editor?title=${id}">
+                      <i class="fas fa-pencil-alt"></i>
+                        Editar
+                    </a>
+                    <div class="dropdown-divider hide-if-no-user"></div>
+                      <a class="dropdown-item text-danger hide-if-no-user" role="presentation" onclick="removeScenario('${id}')" href="#">
+                        <i class="fas fa-trash"></i>
+                        Remover
+                      </a>
                     </div>
                 </div>
+              </div>
             </div>
             <div class="card-body">
                 <ul class="list-group">
                     ${caregiverContent}
                 </ul>
                 <p class="m-0">${card_content}</p>
-            </div>
+           </div>
         </div>
 `;
 }

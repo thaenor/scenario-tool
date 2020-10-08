@@ -8,9 +8,6 @@
   padding-bottom: 5px;
 }
 
-.d-inline-block.float-left {
-}
-
 .badge.badge-primary.text-monospace {
   background-color: #dddddd;
 }
@@ -37,4 +34,3 @@
   opacity: 1;
   transform: scale(1.3);
 }
-

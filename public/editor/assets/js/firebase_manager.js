@@ -16,13 +16,6 @@ $(document).ready(function () {
     }
     save_document(scenario);
   });
-
-  $('#scenario-title').one('click', (e) => {
-    $('#scenario-title').html('');
-  });
-  $('#scenario-persona-name').one('click', (e) => {
-    $('#scenario-persona-name').html('');
-  });
 });
 
 function load_document_data() {

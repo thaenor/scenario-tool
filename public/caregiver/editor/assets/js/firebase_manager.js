@@ -17,13 +17,6 @@ $(document).ready(function () {
     }
     save_document(doc);
   });
-
-  $('#scenario-title').one('click', (e) => {
-    $('#scenario-title').html('');
-  });
-  $('#scenario-persona-name').one('click', (e) => {
-    $('#scenario-persona-name').html('');
-  });
 });
 
 function validate_scenario_id() {
@@ -43,7 +36,6 @@ function load_document_data() {
     .then((doc) => {
       if (doc.exists) {
         renderDocument(doc.data());
-        editMode && remove_caregiver_in_scenario();
       } else {
         console.warn('Document not found');
         window.location.replace(ROUTES.not_found);
@@ -70,6 +62,7 @@ function update_document(contents) {
     .update(contents)
     .then(() => {
       toggle_confirm_on_exit(false);
+      remove_caregiver_in_scenario();
       add_to_scenario_caregivers(document_id, contents.title);
     })
     .catch(function (error) {
@@ -106,7 +99,7 @@ function add_to_scenario_caregivers(ref, title) {
       caregivers: firebase.firestore.FieldValue.arrayUnion(newEntry),
     })
     .then(() => alert(MESSAGES.save_caregiver_success))
-    .catch((e) => console.error(e));
+    .catch((e) => alert(e));
 }
 
 function remove_caregiver_in_scenario() {

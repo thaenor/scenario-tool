@@ -55,6 +55,8 @@ function save_document(doc_contents) {
 }
 
 function update_document(contents) {
+  delete contents.created_at;
+  delete contents.author;
   contents.edited_at = firebase.firestore.FieldValue.serverTimestamp();
   db.collection(FIRE.scenarios)
     .doc(scenario_id)

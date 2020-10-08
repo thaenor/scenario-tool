@@ -1,18 +1,21 @@
-.badge {
-  width: 30px;
-  height: 25px;
-  margin-right: 5px;
-}
-
 .list-group-item {
   padding-bottom: 5px;
 }
 
-.d-inline-block.float-left {
-  /*font-weight: bold;*/
+.img-centre {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.badge.badge-primary.text-monospace {
-  background-color: #dddddd;
+.sidebar li {
+  list-style: none;
 }
 
+.sidebar-menu {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #EEE;
+}

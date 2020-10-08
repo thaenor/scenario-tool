@@ -1,182 +1,266 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ESEP - Ferramenta Role-play de cenários</title>
-    <link rel="icon" type="image/x-icon" href="../../shared/favicon.ico"/>
-    <meta name="description" content="Scenario creation tool for ESEP nursing school.">
-    <meta property="og:type" content="website">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.0/minty/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Loading-Skeleton.css">
-    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-light navbar-expand-md" style="background-color: #0188a5;">
-        <div class="container-fluid"><a class="navbar-brand" href="#" style="color: #f7f7f7;">ESEP</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse d-xl-flex justify-content-xl-end"
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+		<title>ESEP - Ferramenta Role-play de cenários</title>
+		<link rel="icon" type="image/x-icon" href="../../shared/favicon.ico"/>
+		<meta name="description" content="Scenario creation tool for ESEP nursing school."/>
+		<meta property="og:type" content="website"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.0/minty/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css"/>
+		<link rel="stylesheet" href="assets/css/Loading-Skeleton.css"/>
+		<link rel="stylesheet" href="assets/css/Steps-Progressbar.css"/>
+		<link rel="stylesheet" href="assets/css/styles.css"/>
+		<link rel="stylesheet" href="../../shared/Footer-Basic.css"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-light navbar-expand-md" style="background-color: #0188a5;">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#" style="color: #f7f7f7;">ESEP</a>
+				<button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse d-xl-flex justify-content-xl-end"
                 id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li role="presentation" class="nav-item"><a class="nav-link active" href="/main" style="color: #f7f7f7;">Home  <i class="fa fa-home" style="font-size: 30px;"></i></a></li>
-                    <li role="presentation" class="nav-item"><a class="nav-link" href="/about" style="color: #f7f7f7;">Sobre  <i class="fa fa-info-circle" style="font-size: 30px;"></i></a></li>
-                    <li role="presentation" class="nav-item"><a class="nav-link" href="/help" style="color: #f7f7f7;">Ajuda  <i class="fa fa-question-circle" style="font-size: 30px;"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="scenario-title" style="font-size: large;color: #0188A5;padding-top: 20px;padding-bottom: 20px;">Loading...</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-xl-4" style="background-color: #f2f8fc;"><img class="img-fluid" id="image-avatar" src="assets/img/default.png" width="200px" height="250px">
-                <section>
-                    <h5 id="scenario-persona-name" style="margin-top: 5px;color: #666666;">Loading...</h5>
-                    <div id="person">
-                        <div id="Loading-text-block">
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-3 col-lg-4 col-xl-4">
-                <section>
-                    <h2 style="font-size: medium;color: #0188A5;padding-top: 10px;">Dados</h2>
-                    <div id="data">
-                        <div id="Loading-text-block-1">
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                            <div class="border rounded text-template-block text-template-block-animation"></div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-3 col-lg-5 col-xl-4" style="background-color: #f2f8fc;">
-                <ul class="list-group" style="margin-bottom: 5px;margin-top: 20px;">
-                    <li class="list-group-item"><span class="d-inline-block float-left">Consciencialização</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="conscience-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="conscience-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="conscience-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Disponibilidade para cuidar</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="availabilty-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="availabilty-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="availabilty-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Autoeficácia</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="selfefficiency-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="selfefficiency-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="selfefficiency-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Disponibilidade para aprender&nbsp;</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="learning-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="learning-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="learning-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Capacidade fisica</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="physicalcap-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="physicalcap-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="physicalcap-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Capacidade cognitiva</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="cognitivecap-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="cognitivecap-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="cognitivecap-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item"><span class="d-inline-block float-left">Capacidade económica</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="economiccap-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="economiccap-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="economiccap-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                    <li class="list-group-item" style="color: #0188A5;"><span class="d-inline-block float-left">Relação afetiva</span>
-                        <div class="text-right d-inline float-right"><span class="badge badge-primary text-monospace" id="relationship-1"><i class="fas fa-frown" style="font-size: 18px;"></i></span><span class="badge badge-primary text-monospace" id="relationship-2"><i class="fas fa-meh" style="font-size: 18px;"></i></span>
-                            <span
-                                class="badge badge-primary text-monospace" id="relationship-3"><i class="fas fa-smile" style="font-size: 18px;"></i></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12" style="margin-top: 20px;">
-                    <section>
-                        <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Role play evolução</h3>
-                        <div id="evolution">
-                            <div id="Loading-text-block-2">
-                                <div class="border rounded text-template-block text-template-block-animation"></div>
-                                <div class="border rounded text-template-block text-template-block-animation"></div>
-                                <div class="border rounded text-template-block text-template-block-animation"></div>
-                                <div class="border rounded text-template-block text-template-block-animation"></div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <hr>
-                    <h4 class="text-center">A preencher pelos alunos...</h4>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 20px;">
-                <div class="col-md-3">
-                    <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Actividades diagnósticas</h3>
-                </div>
-                <div class="col-md-3">
-                    <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Diagnósticos de enfermagem</h3>
-                </div>
-                <div class="col-md-3">
-                    <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Objectivos</h3>
-                </div>
-                <div class="col-md-3">
-                    <h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Intervenções</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"><textarea placeholder="Texto a introduzir pelo aluno"></textarea></div>
-                <div class="col-md-3"><textarea placeholder="Texto a introduzir pelo aluno"></textarea></div>
-                <div class="col-md-3"><textarea placeholder="Texto a introduzir pelo aluno"></textarea></div>
-                <div class="col-md-3"><textarea placeholder="Texto a introduzir pelo aluno"></textarea></div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js" defer async></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-performance.js"></script>
-    <script src="../shared/docData.js"></script>
-    <script src="../../shared/utils.js"></script>
-    <script src="../../shared/firebase_init.js"></script> 
-    <script src="../shared/ui.js"></script>
-    <script src="../shared/dataManager.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
-
+					<ul class="nav navbar-nav">
+						<li role="presentation" class="nav-item">
+							<a class="nav-link active" href="/main" style="color: #f7f7f7;">Home  
+                                
+								<i class="fa fa-home" style="font-size: 30px;"></i>
+							</a>
+						</li>
+						<li role="presentation" class="nav-item">
+							<a class="nav-link" href="/about" style="color: #f7f7f7;">Sobre  
+                                
+								<i class="fa fa-info-circle" style="font-size: 30px;"></i>
+							</a>
+						</li>
+						<li role="presentation" class="nav-item">
+							<a class="nav-link" href="/help" style="color: #f7f7f7;">Ajuda  
+                                
+								<i class="fa fa-question-circle" style="font-size: 30px;"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 id="scenario-title" style="font-size: large;color: #0188A5;padding-top: 20px;padding-bottom: 20px;">Loading...</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-xl-4" style="background-color: #f2f8fc;">
+					<img class="img-fluid" id="image-avatar" src="assets/img/default.png" width="200px" height="250px"/>
+					<section>
+						<h5 id="scenario-persona-name" style="margin-top: 5px;color: #666666;">Loading...</h5>
+						<div id="person">
+							<div id="Loading-text-block">
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="col-md-3 col-lg-4 col-xl-4">
+					<section>
+						<h2 style="font-size: medium;color: #0188A5;padding-top: 10px;">Dados</h2>
+						<div id="data">
+							<div id="Loading-text-block-1">
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+								<div class="border rounded text-template-block text-template-block-animation"></div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="col-md-3 col-lg-5 col-xl-4" style="background-color: #f2f8fc;">
+					<ul class="list-group" style="margin-bottom: 5px;margin-top: 20px;">
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Consciencialização</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="conscience-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="conscience-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="conscience-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Disponibilidade para cuidar</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="availabilty-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="availabilty-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="availabilty-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Autoeficácia</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="selfefficiency-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="selfefficiency-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="selfefficiency-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Disponibilidade para aprender&nbsp;</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="learning-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="learning-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="learning-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Capacidade fisica</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="physicalcap-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="physicalcap-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="physicalcap-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Capacidade cognitiva</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="cognitivecap-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="cognitivecap-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="cognitivecap-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<span class="d-inline-block float-left">Capacidade económica</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="economiccap-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="economiccap-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="economiccap-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+						<li class="list-group-item" style="color: #0188A5;">
+							<span class="d-inline-block float-left">Relação afetiva</span>
+							<div class="text-right d-inline float-right">
+								<span class="badge badge-primary text-monospace" id="relationship-1">
+									<i class="fas fa-frown" style="font-size: 18px;"></i>
+								</span>
+								<span class="badge badge-primary text-monospace" id="relationship-2">
+									<i class="fas fa-meh" style="font-size: 18px;"></i>
+								</span>
+								<span
+                                class="badge badge-primary text-monospace" id="relationship-3">
+									<i class="fas fa-smile" style="font-size: 18px;"></i>
+								</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12" style="margin-top: 20px;">
+						<section>
+							<h3 style="font-size: large;color: #0188A5;padding-top: 10px;">Role play evolução</h3>
+							<div id="evolution">
+								<div id="Loading-text-block-2">
+									<div class="border rounded text-template-block text-template-block-animation"></div>
+									<div class="border rounded text-template-block text-template-block-animation"></div>
+									<div class="border rounded text-template-block text-template-block-animation"></div>
+									<div class="border rounded text-template-block text-template-block-animation"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-basic" style="background: rgb(42,136,165); margin-top:20px">
+			<footer>
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a href="/">Home</a>
+					</li>
+					<li class="list-inline-item">
+						<a href="/about">Sobre</a>
+					</li>
+					<li class="list-inline-item">
+						<a href="/help">Ajuda</a>
+					</li>
+					<li class="list-inline-item">
+						<a href="/auth">Registo</a>
+					</li>
+				</ul>
+				<p class="copyright">ESEP © 2020</p>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js" defer async></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-performance.js"></script>
+		<script src="../shared/docData.js"></script>
+		<script src="../../shared/utils.js"></script>
+		<script src="../../shared/firebase_init.js"></script>
+		<script src="../shared/ui.js"></script>
+		<script src="../shared/dataManager.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>

@@ -1,6 +1,6 @@
 let db;
 let editMode = false;
-let scenario_id, document_id;
+let scenario_id, document_id, loaded_scenario;
 
 $(document).ready(function () {
   toggle_confirm_on_exit(true);
@@ -35,6 +35,7 @@ function load_document_data() {
     .get()
     .then((doc) => {
       if (doc.exists) {
+        loaded_scenario = doc.data();
         renderDocument(doc.data());
       } else {
         console.warn('Document not found');
@@ -103,7 +104,13 @@ function add_to_scenario_caregivers(ref, title) {
 }
 
 function remove_caregiver_in_scenario() {
-  const entryToRemove = { title: get_doc_title(), ref: document_id };
+  debugger;
+  if(loaded_scenario.title === undefined) {
+    alert('failed to update parent document');
+    return;
+    throw new Error('failed to update parent document')
+  }
+  const entryToRemove = { title: loaded_scenario.title, ref: document_id };
   db.collection(FIRE.scenarios)
     .doc(scenario_id)
     .update({

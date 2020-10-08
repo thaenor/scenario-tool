@@ -48,7 +48,7 @@ function getDocumentData() {
         let contenthtml = createCard(
           doc.id,
           scene.title,
-          scene.prose.summary.substring(0, 150).concat( '...'),
+          scene.prose.summary.substring(0, 150).concat('...'),
           scene.caregivers
         );
         $('#id-firebase-content').append(contenthtml);
@@ -68,24 +68,22 @@ function getDocumentData() {
 
 function removeScenario(Ref) {
   let flag = confirm('Deseja remover este cenário?');
-  if(flag) {
+  if (flag) {
     db.collection('scenarios')
-    .doc(Ref)
-    .delete()
-    .then(function () {
-      $(`#${Ref}`).empty();
-    })
-    .catch(function (error) {
-      console.error('Error removing document: ', error);
-      alert(MESSAGES.general_error);
-    });
+      .doc(Ref)
+      .delete()
+      .then(function () {
+        $(`#${Ref}`).empty();
+      })
+      .catch(function (error) {
+        console.error('Error removing document: ', error);
+        alert(MESSAGES.general_error);
+      });
   }
 }
 
 function remove_scenario_reference(scenario_ref, ref, title) {
-  let flag = confirm('Deseja remover este cenário?');
-  if(flag) {
-    db.collection(FIRE.scenarios)
+  db.collection(FIRE.scenarios)
     .doc(scenario_ref)
     .update({
       caregivers: firebase.firestore.FieldValue.arrayRemove({
@@ -95,23 +93,25 @@ function remove_scenario_reference(scenario_ref, ref, title) {
     })
     .then(() => $(`#${ref}`).empty())
     .catch((e) => console.error(e));
-  }
 }
 
 function removeCaregiver(scenario_ref, ref, name) {
-  db.collection(FIRE.scenarios)
-    .doc(scenario_ref)
-    .collection(FIRE.caregivers)
-    .doc(ref)
-    .delete()
-    .then(function () {
-      console.log('Document successfully deleted!');
-      remove_scenario_reference(scenario_ref, ref, name);
-    })
-    .catch(function (error) {
-      console.error('Error removing document: ', error);
-      alert(MESSAGES.general_error);
-    });
+  let flag = confirm('Deseja remover este cuidador?');
+  if (flag) {
+    db.collection(FIRE.scenarios)
+      .doc(scenario_ref)
+      .collection(FIRE.caregivers)
+      .doc(ref)
+      .delete()
+      .then(function () {
+        console.log('Document successfully deleted!');
+        remove_scenario_reference(scenario_ref, ref, name);
+      })
+      .catch(function (error) {
+        console.error('Error removing document: ', error);
+        alert(MESSAGES.general_error);
+      });
+  }
 }
 
 function createCard(id, card_title, card_content, caregivers) {

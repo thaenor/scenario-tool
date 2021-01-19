@@ -1,10 +1,13 @@
 const db = firebase.firestore();
 firebase.auth().languageCode = 'pt';
 let scene_collection = [];
+let search_results = [];
+let fuse;
 
 $(document).ready(function () {
   fillUsername(USER);
   getDocumentData();
+  registerSearchEvts();
 
   $('#logout-btn').click(() => {
     localStorage.removeItem(STORAGE.user_name);
@@ -49,18 +52,26 @@ function getDocumentData() {
           '<h3>Não foram encontrados cenários</h3>'
         );
       }
-      snapshot.docs.map((doc) => {
+      snapshot.docs.map((doc, i) => {
         let scene = doc.data();
         scene_collection.push({ id: doc.id, ...scene });
         let contenthtml = createCard(
           doc.id,
           scene.title,
           scene.prose.summary.substring(0, 150).concat('...'),
-          scene.caregivers
+          scene.caregivers,
+          scene.author
         );
         $('#id-firebase-content').append(contenthtml);
         if (typeof USER !== 'string' || USER === '') {
           $('.hide-if-no-user').remove();
+        }
+
+        if(i === snapshot.docs.length - 1) {
+          fuse = new Fuse(scene_collection, {
+            includeScore: true,
+            keys: ['name', 'title', 'author', 'prose.summary', 'caregiver.title' ]
+          });
         }
       });
     })
@@ -121,7 +132,7 @@ function removeCaregiver(scenario_ref, ref, name) {
   }
 }
 
-function createCard(id, card_title, card_content, caregivers) {
+function createCard(id, card_title, card_content, caregivers, author) {
   let caregiverContent = '';
   if (typeof caregivers !== 'undefined') {
     caregivers.forEach((c) => {
@@ -138,23 +149,23 @@ function createCard(id, card_title, card_content, caregivers) {
                 <h6 class="text-primary font-weight-bold m-0">${card_title}</h6>
               </div>
               <div class="p-2">
-                <a href="/caregiver/editor?scenario=${id}" 
-                  class="btn btn-primary btn-circle ml-1 hide-if-no-user" 
+                <a href="/caregiver/editor?scenario=${id}"
+                  class="btn btn-primary btn-circle ml-1 hide-if-no-user"
                   data-toggle="tooltip" data-placement="top" title="Adicionar cuidador">
                   <i class="fas fa-plus text-white"></i>
                 </a>
-                <a href="/viewer?title=${id}" 
-                   class="btn btn-primary btn-circle ml-1" 
+                <a href="/viewer?title=${id}"
+                   class="btn btn-primary btn-circle ml-1"
                    data-toggle="tooltip" data-placement="top" title="Ver cenário">
                   <i class="fas fa-eye text-white"></i>
                 </a>
-                <a href="/editor?title=${id}" 
-                   class="btn btn-primary btn-circle ml-1 hide-if-no-user" 
+                <a href="/editor?title=${id}"
+                   class="btn btn-primary btn-circle ml-1 hide-if-no-user"
                    data-toggle="tooltip" data-placement="top" title="Alterar cenário">
                   <i class="fas fa-pencil-alt text-white"></i>
                 </a>
-                <a onclick="removeScenario('${id}')" href="#" 
-                   class="btn btn-danger btn-circle ml-1 hide-if-no-user" 
+                <a onclick="removeScenario('${id}')" href="#"
+                   class="btn btn-danger btn-circle ml-1 hide-if-no-user"
                    role="button"
                    data-toggle="tooltip" data-placement="top" title="Remover cenário">
                   <i class="fas fa-trash text-white"></i>
@@ -193,6 +204,7 @@ function createCard(id, card_title, card_content, caregivers) {
                     ${caregiverContent}
                 </ul>
                 <p class="m-0">${card_content}</p>
+                ${author}
            </div>
         </div>
 `;
@@ -227,4 +239,39 @@ function addCareGiverContent(parent, name, Ref) {
      </div>
     </li>
     `;
+}
+
+
+function registerSearchEvts() {
+  $("#searchBtn").click(evt => {
+    const txt = $("#searchField").val();
+
+    search_results = fuse.search(txt);
+
+
+    if(search_results.length <= 0) {
+      $('#id-firebase-content').prepend('<h1>A pesquisa não retornou quaisquer resultados</h1>');
+      search_results = scene_collection;
+    }
+
+    $("#id-firebase-content").empty();
+    search_results.forEach( el => {
+      if(el.item) {
+        el = el.item;
+      }
+      let contenthtml = createCard(
+        el.id,
+        el.title,
+        el.prose.summary.substring(0, 150).concat('...'),
+        el.caregivers,
+        el.author
+      );
+      $('#id-firebase-content').append(contenthtml);
+      if (typeof USER !== 'string' || USER === '') {
+        $('.hide-if-no-user').remove();
+      }
+    });
+
+
+  })
 }

@@ -69,7 +69,7 @@ function getDocumentData() {
 
         if(i === snapshot.docs.length - 1) {
           fuse = new Fuse(scene_collection, {
-            includeScore: true,
+            ignoreLocation: true,
             keys: ['name', 'title', 'author', 'prose.summary', 'caregiver.title' ]
           });
         }
